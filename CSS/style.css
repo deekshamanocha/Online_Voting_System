@@ -1,0 +1,59 @@
+body{
+    /* background-image: url(../images/img1.jpg); */
+    text-align: center;
+    background-color: #70ffc3;
+    /* overflow: hidden; */
+}
+#headersection{
+    padding: 10px;
+}
+#container{
+    width: 100%;
+}
+hr{
+    padding: 7px;
+    background-color: black;
+    width: 100vw;
+}
+#headersection h1{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input{
+    padding: 10px;
+    border-radius: 20px
+}
+select{
+    padding: 10px;
+    border-radius: 20pc;
+    width: 190px;
+    font-size: 16px;
+    border-color: blueviolet;
+    border-width: 4px;
+    background-color: #FFBB70;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+button{
+    font-weight: bolder;
+    padding: 16px;
+    width: 6pc;
+    background-color: #6499E9;
+    border-radius: 20px;
+    font-size: larger;
+    
+}
+a{
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+a:hover{
+    color: red;
+}
+p{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#bodysection h2{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+} 

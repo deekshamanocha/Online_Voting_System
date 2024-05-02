@@ -1,0 +1,84 @@
+body{
+    text-align: center;
+    background-color: #5BBCFF;
+    overflow-x: hidden;
+    
+}
+#headersection{
+    padding: 7px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#headersection hr{
+    padding: 10px;
+    background-color: black;
+    width: 100vw;
+}
+#bodysection h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 10;  
+    font-size: 30px;
+}
+input{
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+#address{
+    /* width: 300px;  */
+    padding: 20px;
+    font-size: 20px;
+}
+#photo{
+    font-size: 16px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 15pc;
+    
+}
+p.image{
+    font-weight: bold;
+    border: 3px solid ; 
+    padding: 10px; 
+    border-radius: 16px;
+    display:inline;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+p.role{
+    font-weight: bold;
+    border: 3px solid ; 
+    padding: 10px; 
+    border-radius: 16px;
+    border-color: brown;
+    border-width: 3px;
+    display:inline;
+    background-color: wheat;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+select{
+    font-size: 19px;
+    background-color: wheat;
+    border-radius: 10px;
+    border-style: hidden;
+}
+button{
+    font-weight: bold;
+    padding: 3px;
+    width: 9pc;
+    background-color: #6499E9;
+    border-radius: 10px;
+    font-size: 25px;
+}
+p{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+a{
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+a:hover{
+    color: red;
+}
