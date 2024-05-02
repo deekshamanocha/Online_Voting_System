@@ -1,0 +1,38 @@
+.profile {
+    text-align: center;
+    background-color: #D8AE7E;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* Horizontally center align */
+    align-items: center;
+    /* Vertically center align */
+    width: 100vw;
+    height: 100vh;
+}
+
+.prof-img {
+    flex: 1;
+    /* Take up 50% of the space */
+    display: flex;
+    justify-content: flex-start;
+    align-items: initial;
+    padding-left: 30px;
+
+}
+
+.prof-details {
+    flex: 1;
+    /* Take up 50% of the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#user-img {
+    max-height: 50%;
+    max-width: 50%;
+    border: 1px solid;
+    border-radius: 10px;
+}
