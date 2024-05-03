@@ -6,6 +6,14 @@ $mobile = $_POST['mobile'];
 $password = $_POST['password'];
 $role = $_POST['role'];
 
+if (!$connect) {
+    echo '
+                <script>
+                    alert("Could not Login");
+                </script>
+            ';
+}
+
 $check = mysqli_query($connect, "SELECT * FROM userdata WHERE mobile = '$mobile' AND password = '$password' AND role = '$role'");
 
 if (mysqli_num_rows($check) > 0) {
@@ -19,16 +27,14 @@ if (mysqli_num_rows($check) > 0) {
     if ($role == 1) {
         echo '
                 <script>
-                    alert("Logged in successful");
                     window.location = "../Routes/dashboard.php";
-                </script>        
+                </script>
             ';
     } else if ($role == 2) {
         echo '
                 <script>
-                    alert("Logged in successful");
                     window.location = "../Routes/dashboard.php";
-                </script> 
+                </script>
                 
             ';
     }
