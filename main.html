@@ -13,9 +13,8 @@
         <div id="bck-logout">
             <button id="back" onclick="backbutton()"> <span> Back </span></button>
             <div class="rt-nav">
-                <button id="prof" onclick="profbutton()"> <span> Profile </span></button>
-                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
-                <button id="home" onclick="homebutton()"> <span>Home</span> </button>
+                <button id="logout" onclick="signin()"> <span>signIn</span> </button>
+                <button id="home" onclick="signUp()"> <span>signUp</span> </button>
 
             </div>
 
@@ -30,20 +29,16 @@
                 // alert("button clicked");
             }
 
-            function logout() {
+            function signin() {
                 document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 window.location.replace("../Login.html");
             }
 
-            function homebutton() {
+            function signUp() {
                 window.location = "../main.html"
                 // alert("button clicked");
             }
 
-            function profbutton() {
-                window.location = "./Profile.php"
-                // alert("button clicked");
-            }
         </script>
     </div>
 </body>
