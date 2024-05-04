@@ -9,10 +9,9 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
 $usersdata = $_SESSION['usersdata'];
 $groupdata = $_SESSION['groupdata'];
 
-if ($_SESSION['usersdata']['status']==0) {
+if ($_SESSION['usersdata']['status'] == 0) {
     $status = 'Not voted';
-}
-else {
+} else {
     $status = 'Voted successfully';
 }
 
@@ -45,23 +44,19 @@ else {
             <script>
                 function backbutton() {
                     window.history.back();
-                    // alert("button clicked");
                 }
 
                 function homebutton() {
                     window.location = "../main.html";
-                    // alert("button clicked");
                 }
 
                 function profbutton() {
                     window.location = "./Profile.php";
-                    // alert("button clicked");
                 }
 
                 function logout() {
                     document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                     window.history.back();
-                    // window.location.replace("../Login.html");
                 }
             </script>
         </div>
@@ -72,34 +67,34 @@ else {
 
         <div id="group">
             <?php
-                if ($_SESSION['groupdata']) {
-                    for ($i=0; $i< count($groupdata); $i++) { 
-                        ?>
-                            <div>
-                                <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?> " height="100" width="100" style="float: left;" ><br>
-                                <b>Party Name:</b> <?php echo $groupdata[$i]['name'] ?> <br>
-                                <b>Number of Votes: </b> <?php echo $groupdata[$i]['votes'] ?> <br>
-                                <form action="../API/vote.php" method="post" >
-                                <b>Status: </b> <?php echo $status ?> 
-                                    <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>"><br>
-                                    <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id']?>"><br>
-                                    <input type="submit" name="votebutton" value="VOTE" id="votebutton">
-                                </form> 
-                            </div>
-                        <?php
-                    }
+            if ($_SESSION['groupdata']) {
+                for ($i = 0; $i < count($groupdata); $i++) {
+                    ?>
+                    <div>
+                        <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?> " height="100" width="100"
+                            style="float: left;"><br>
+                        <b>Party Name:</b> <?php echo $groupdata[$i]['name'] ?> <br>
+                        <b>Number of Votes: </b> <?php echo $groupdata[$i]['votes'] ?> <br>
+                        <form action="../API/vote.php" method="post">
+                            <b>Status: </b> <?php echo $status ?>
+                            <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>"><br>
+                            <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>"><br>
+                            <input type="submit" name="votebutton" value="VOTE" id="votebutton">
+                        </form>
+                    </div>
+                    <?php
                 }
-                else {
-                    echo '
+            } else {
+                echo '
                         <script>
-                            alert("Error occured!");
+                            alert("Error occured! hello geu");
                             window.location = "../Login.html";
                         </script>
                 
                     ';
-                }
+            }
             ?>
-              
+
         </div>
     </div>
 
