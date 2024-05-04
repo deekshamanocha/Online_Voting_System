@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System</title>
     <link rel="stylesheet" href="../CSS/register.css">
 </head>
-<body >
+
+<body>
     <div id="headersection">
         <h1>Online Voting System</h1>
         <hr>
     </div>
-    
+
     <div id="bodysection">
         <h2>Registration</h2>
-        <form action="../API/registration.php" method="post" enctype="multipart/form-data" >
-            <input type="text" name="name" id="" placeholder="Enter your name" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <form action="../API/registration.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" id="" placeholder="Enter your name"
+                required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="tel" name="number" id="" placeholder="Enter your Number" minlength="10" required>
             <br><br>
-            <input type="password" name="password" id="" placeholder="Enter password" minlength="8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="password" name="password" id="" placeholder="Enter password"
+                minlength="8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="password" name="confirmpassword" id="" placeholder="Confirm password" required>
             <br><br>
-            <input type="text" name="address" id="address" placeholder="Address" >
+            <input type="text" name="address" id="address" placeholder="Address">
             <br><br>
-            <div >
+            <div>
                 <p class="image">Upload Image: <input type="file" name="photo" id="photo" required></p>
             </div>
             <br><br>
             <div>
                 <p class="role">
-                    Select your role:   
-                    <select name="role" id="" >
+                    Select your role:
+                    <select name="role" id="">
                         <option value="3">Select Option</option>
                         <option value="1">Voter</option>
                         <option value="2">Group</option>
@@ -43,7 +47,8 @@
             <p>Already User? <a href="../Login.html">Login here</a></p>
         </form>
     </div>
-       
-    
+
+
 </body>
+
 </html>

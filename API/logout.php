@@ -2,5 +2,5 @@
 session_start();
 $_SESSION = array();
 session_destroy();
-header("Location: ../Login.html");
+header("Location: ../Login.html", TRUE, 301);
 exit();
