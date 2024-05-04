@@ -27,13 +27,13 @@ if (mysqli_num_rows($check) > 0) {
     if ($role == 1) {
         echo '
                 <script>
-                    window.location = "../Routes/dashboard.php";
+                    window.location.replace("../Routes/dashboard.php");
                 </script>
             ';
     } else if ($role == 2) {
         echo '
                 <script>
-                    window.location = "../Routes/dashboard.php";
+                    window.location.replace("../Routes/dashboard.php");
                 </script>
                 
             ';

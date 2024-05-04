@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online voting system</title>
     <link rel="stylesheet" href="CSS\style.css">
 </head>
+
 <body>
     <!-- <img  src="images\img1.jpg" alt=""> -->
     <div id="container">
@@ -13,15 +15,17 @@
             <h1>ONLINE VOTING SYSTEM</h1>
             <hr>
         </div>
-        
+
         <div id="bodysection">
             <h2>LOGIN DETAILS</h2>
             <form action="./API/login.php" method="post" enctype="multipart/form-data">
-                <input type="tel" name="mobile" id="" placeholder="Enter Mobile Number" maxlength="10" required><br><br>
-                <input type="password" name="password" id="" placeholder="Enter password" required><br><br>
+                <input type="tel" name="mobile" id="" placeholder="Enter Mobile Number" maxlength="10"
+                    value="9599393303" required><br><br>
+                <input type="password" name="password" id="" placeholder="Enter password" value="david@123"
+                    required><br><br>
                 <select name="role" id="" required>
-                    <option value="3">Select option</option>
-                    <option value="1">Voter</option>
+                    <option value="0">Select option</option>
+                    <option value="1" selected>Voter</option>
                     <option value="2">Group</option>
                 </select><br><br>
                 <button type="submit">LOGIN</button><br><br>
@@ -29,6 +33,7 @@
             </form>
         </div>
     </div>
-    
+
 </body>
+
 </html>

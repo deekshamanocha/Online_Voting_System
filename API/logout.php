@@ -4,4 +4,4 @@ $_SESSION = array();
 session_destroy();
 header("Location: ../Login.html");
 exit();
-?>
+

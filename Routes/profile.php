@@ -2,7 +2,7 @@
 session_start();
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
-    header("Location: ../Login.html");
+    header("Location: ../Login.html", TRUE, 301);
     exit();
 }
 
@@ -37,17 +37,13 @@ $usersdata = $_SESSION['usersdata'];
         </h1>
         <script>
             function backbutton() {
-                window.location = "../Login.html"
+                window.history.back();
                 // alert("button clicked");
             }
 
             function logout() {
-                // window.location = "../API/logout.php"
-                <?php
-                $_SESSION = array();
-                session_destroy();
-                ?>
-
+                document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.replace("../Login.html");
             }
 
             function homebutton() {
