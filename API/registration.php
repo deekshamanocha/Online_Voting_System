@@ -4,6 +4,7 @@ include ("connect.php");
 $name = $_POST['name'];
 $number = $_POST['number'];
 $password = $_POST['password'];
+$gender = $_POST['gender'];
 $confirmpassword = $_POST['confirmpassword'];
 $address = $_POST['address'];
 $image = $_FILES['photo']['name'];
@@ -12,7 +13,7 @@ $role = $_POST['role'];
 
 if ($password == $confirmpassword) {
     move_uploaded_file($tmp_name, "../uploads/$image");
-    $insert = mysqli_query($connect, "INSERT INTO userdata (name,mobile,password,address,photo,role,status,votes) VALUE ('$name','$number','$password','$address','$image','$role',0,0)");
+    $insert = mysqli_query($connect, "INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUE ('$name','$number','$password','$gender','$address','$image','$role',0,0)");
     if ($insert) {
         echo '
             <script>

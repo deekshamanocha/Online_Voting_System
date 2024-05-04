@@ -78,13 +78,12 @@ $usersdata = $_SESSION['usersdata'];
                 </tr>
                 <tr>
                     <th>Gender</th>
-                    <td>Maria Anders</td>
+                    <td><?php echo $usersdata['gender'] ?></td>
                 </tr>
                 <tr>
                     <th>Address</th>
                     <td rowspan="2"><?php
-                    // echo $usersdata['address']
-                    echo "66 bell road clement town dehradun uttrakhand"
+                    echo $usersdata['address']
                         ?></td>
                 </tr>
                 <tr>
