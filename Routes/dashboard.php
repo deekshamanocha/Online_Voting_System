@@ -23,6 +23,7 @@ else {
 <head>
     <title>Online voting system - Dashboard</title>
     <link rel="stylesheet" href="../CSS/app.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
 </head>
 
 <body>
