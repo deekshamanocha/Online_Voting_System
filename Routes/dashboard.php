@@ -7,6 +7,15 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
 }
 
 $usersdata = $_SESSION['usersdata'];
+$groupdata = $_SESSION['groupdata'];
+
+if ($_SESSION['usersdata']['status']==0) {
+    $status = 'Not voted';
+}
+else {
+    $status = 'Voted successfully';
+}
+
 ?>
 
 <html>
@@ -62,15 +71,36 @@ $usersdata = $_SESSION['usersdata'];
         </div>
 
         <div id="group">
-
+            <?php
+                if ($_SESSION['groupdata']) {
+                    for ($i=0; $i< count($groupdata); $i++) { 
+                        ?>
+                            <div>
+                                <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?> " height="100" width="100" style="float: left;" ><br>
+                                <b>Party Name:</b> <?php echo $groupdata[$i]['name'] ?> <br>
+                                <b>Number of Votes: </b> <?php echo $groupdata[$i]['votes'] ?> <br>
+                                <form action="../API/vote.php" method="post" >
+                                <b>Status: </b> <?php echo $status ?> 
+                                    <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>"><br>
+                                    <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id']?>"><br>
+                                    <input type="submit" name="votebutton" value="VOTE" id="votebutton">
+                                </form> 
+                            </div>
+                        <?php
+                    }
+                }
+                else {
+                    echo '
+                        <script>
+                            alert("Error occured!");
+                            window.location = "../Login.html";
+                        </script>
+                
+                    ';
+                }
+            ?>
+              
         </div>
-
-        <?php if (!isset($_SESSION['usersdata'])) {
-            echo "Current session ID: " . session_id() . " ";
-            print_r($_SESSION);
-        } ?>
-
-
     </div>
 
 </body>

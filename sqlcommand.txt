@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS online_voting_system;
+
+USE online_voting_system;
+
+CREATE TABLE IF NOT EXISTS userdata (
+    id INT(10) PRIMARY KEY,
+    name TEXT,
+    mobile BIGINT(10),
+    password VARCHAR(50),
+    address VARCHAR(100),
+    photo VARCHAR(255),
+    role INT(1),
+    status INT(1),
+    votes INT(100)
+);
