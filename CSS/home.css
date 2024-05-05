@@ -1,7 +1,9 @@
-body{
-    background-image: url(../images/img6.jpg);
-    background-size:cover;
-    overflow-y:scroll;
+html,body{
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    padding: 10px;
+    height: 100%;
+    
 }
 #bodysection{
     display: flex;
@@ -160,8 +162,8 @@ body{
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
   overflow-y: hidden;
   transition: 0.5s;
 }
@@ -203,4 +205,30 @@ body{
   right: 35px;
   }
 }
+#page-content {
+  flex: 1 0 auto;
+}
+
+  
+#livearea{
+    background-color: #191919; 
+    width: 15pc;;
+    /* padding: 2px; */
+    border-radius: 10px;
+    align-self: center;
+    text-align: center;
+    opacity: 0.9;
+}
+#live{
+    text-align: center;
+    color: red;
+    animation: blinker 1.5s linear infinite;
+    font-family: "Jersey 25 Charted";
+    font-weight: 100;
+}
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+};
 
