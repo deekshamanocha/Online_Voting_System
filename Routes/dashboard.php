@@ -48,7 +48,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
                 }
 
                 function homebutton() {
-                    window.location = "../main.html";
+                    window.location = "../home.html";
                 }
 
                 function profbutton() {
@@ -72,15 +72,14 @@ if ($_SESSION['usersdata']['status'] == 0) {
                 for ($i = 0; $i < count($groupdata); $i++) {
                     ?>
                     <div>
-                        <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?> " height="100" width="100"
-                            style="float: left;"><br>
-                        <b>Party Name:</b> <?php echo $groupdata[$i]['name'] ?> <br>
-                        <b>Number of Votes: </b> <?php echo $groupdata[$i]['votes'] ?> <br>
+                        <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" id="pimage"  >
+                        <p id="pname" >Party Name: <?php echo $groupdata[$i]['name'] ?> </p> 
+                        <p id="nvotes" >Number of Votes:  <?php echo $groupdata[$i]['votes'] ?> </p>
                         <form action="../API/vote.php" method="post">
-                            <b>Status: </b> <?php echo $status ?>
-                            <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>"><br>
-                            <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>"><br>
-                            <input type="submit" name="votebutton" value="VOTE" id="votebutton">
+                            <p id="votestatus" >Status:  <?php echo $status ?> </p>
+                            <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>">
+                            <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>"> 
+                            <input type="submit" name="votebutton" value="VOTE" id="votebutton" <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?> >  <br><br><br>
                         </form>
                     </div>
                     <?php
