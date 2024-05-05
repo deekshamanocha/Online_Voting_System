@@ -36,25 +36,25 @@ $usersdata = $_SESSION['usersdata'];
             <marquee behavior="" direction=" ">Online Voting System</marquee>
         </h1>
         <script>
-            function backbutton() {
-                window.history.back();
-                // alert("button clicked");
-            }
+        function backbutton() {
+            window.history.back();
+            // alert("button clicked");
+        }
 
-            function logout() {
-                document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.replace("../Login.html");
-            }
+        function logout() {
+            document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.replace("../Login.html");
+        }
 
-            function homebutton() {
-                window.location = "../main.html"
-                // alert("button clicked");
-            }
+        function homebutton() {
+            window.location = "../home.html"
+            // alert("button clicked");
+        }
 
-            function profbutton() {
-                window.location = "./Profile.php"
-                // alert("button clicked");
-            }
+        function profbutton() {
+            window.location = "./Profile.php"
+            // alert("button clicked");
+        }
         </script>
     </div>
     <div class="profile">
