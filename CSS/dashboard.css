@@ -1,13 +1,19 @@
-#pimage{
+#pimage {
     float: left;
-    
-}
+    height: 200px;
+    width: 200px;
 
-#pname,#nvotes,#votestatus{
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
-#votebutton{
+
+#pname,
+#nvotes,
+#votestatus {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#votebutton {
     padding: 8px;
     border-radius: 10px;
     width: 5pc;

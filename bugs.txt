@@ -1,0 +1,4 @@
+1. Same mob no should not register
+2. Case sensitivity of password
+3. restrict the no of attempts log
+4. Automatic logout on pressing back();
