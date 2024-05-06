@@ -1,7 +1,8 @@
 body{
     /* background-image: url(../images/img1.jpg); */
     text-align: center;
-    background-color: #70ffc3;
+    background: blue;
+    background: linear-gradient(to right,skyblue,#33aeff);
     /* overflow: hidden; */
 }
 #headersection{
