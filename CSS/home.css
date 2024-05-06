@@ -203,7 +203,8 @@ html,body{
   font-size: 40px;
   top: 15px;
   right: 35px;
-  }
+}
+
 }
 #page-content {
   flex: 1 0 auto;

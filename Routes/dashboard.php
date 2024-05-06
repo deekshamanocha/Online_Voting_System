@@ -73,7 +73,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
                     ?>
                     <div>
                         <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" id="pimage"  >
-                        <p id="pname" >Party Name: <?php echo $groupdata[$i]['name'] ?> </p> 
+                        <p id="pname">Party Name: <?php echo $groupdata[$i]['name'] ?> </p> 
                         <p id="nvotes" >Number of Votes:  <?php echo $groupdata[$i]['votes'] ?> </p>
                         <form action="../API/vote.php" method="post">
                             <p id="votestatus" >Status:  <?php echo $status ?> </p>

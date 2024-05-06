@@ -2,6 +2,16 @@
     float: left;
     
 }
-#pname{
-    font-size: large;
+
+#pname,#nvotes,#votestatus{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+#votebutton{
+    padding: 8px;
+    border-radius: 10px;
+    width: 5pc;
+    background-color: rgba(72, 135, 231, 0.989);
+    font-weight: bolder;
+    font-size: larger;
 }
