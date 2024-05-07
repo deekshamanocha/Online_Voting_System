@@ -14,7 +14,7 @@ if (!$connect) {
             ';
 }
 
-$check = mysqli_query($connect, "SELECT * FROM userdata WHERE mobile = '$mobile' AND password = '$password' AND role = '$role'");
+$check = mysqli_query($connect, "SELECT * FROM userdata WHERE mobile = '$mobile' AND binary password = '$password' AND role = '$role'");
 
 if (mysqli_num_rows($check) > 0) {
     $usersdata = mysqli_fetch_array($check);
