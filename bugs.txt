@@ -2,3 +2,11 @@
 2. Case sensitivity of password   -> DONE
 3. restrict the no of attempts log
 4. Automatic logout on pressing back();
+
+
+To do:
+1. password Encryption
+2. OTP system
+3. result page
+4. candidate list updation Automatic
+5. 

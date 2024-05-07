@@ -5,7 +5,12 @@
 
 
 }
-
+#group{
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+    ;
+}
 #pname,
 #nvotes,
 #votestatus {
@@ -20,4 +25,56 @@
     background-color: rgba(72, 135, 231, 0.989);
     font-weight: bolder;
     font-size: larger;
+}
+#group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    /* flex: 1 0 calc(25% - 20px); 25% width with margin */
+    width: calc(25% - 20px); /* 25% width with margin */
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-content {
+    text-align: left;
+}
+
+.party-name {
+    font-weight: bold;
+}
+
+.vote-count {
+    color: #555;
+}
+
+.vote-status {
+    font-style: italic;
+}
+
+.vote-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.vote-button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
 }

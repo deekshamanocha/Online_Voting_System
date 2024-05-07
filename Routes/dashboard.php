@@ -62,42 +62,44 @@ if ($_SESSION['usersdata']['status'] == 0) {
             </script>
 
         </div>
-        <hr>
+    
         <div id="user-profile">
 
         </div>
 
         <div id="group">
-            <?php
-            if ($_SESSION['groupdata']) {
-                for ($i = 0; $i < count($groupdata); $i++) {
-                    ?>
-            <div>
-                <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" id="pimage">
-                <p id="pname">Party Name: <?php echo $groupdata[$i]['name'] ?> </p>
-                <p id="nvotes">Number of Votes: <?php echo $groupdata[$i]['votes'] ?> </p>
-                <form action="../API/vote.php" method="post">
-                    <p id="votestatus">Status: <?php echo $status ?> </p>
-                    <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>">
-                    <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>">
-                    <input type="submit" name="votebutton" value="VOTE" id="votebutton"
-                        <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?>> <br><br><br>
-                </form>
+    <?php
+    if ($_SESSION['groupdata']) {
+        for ($i = 0; $i < count($groupdata); $i++) {
+            ?>
+            
+            <div class="card">
+                <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" class="card-image">
+                <div class="card-content">
+                    <p class="party-name">Party Name: <?php echo $groupdata[$i]['name'] ?> </p>
+                    <p class="vote-count">Number of Votes: <?php echo $groupdata[$i]['votes'] ?> </p>
+                    <form action="../API/vote.php" method="post">
+                        <p class="vote-status">Status: <?php echo $status ?> </p>
+                        <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>">
+                        <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>">
+                        <input type="submit" name="votebutton" value="VOTE" class="vote-button"
+                               <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?>> <br><br><br>
+                    </form>
+                </div>
             </div>
             <?php
-                }
-            } else {
-                echo '
-                        <script>
-                            alert("Error occured! hello geu");
-                            window.location = "../Login.html";
-                        </script>
-                
-                    ';
-            }
-            ?>
+        }
+    } else {
+        echo '
+            <script>
+                alert("Error occurred! Hello there!");
+                window.location = "../Login.html";
+            </script>
+        ';
+    }
+    ?>
+</div>
 
-        </div>
     </div>
 
     <script>

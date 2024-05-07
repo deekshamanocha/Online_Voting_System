@@ -1,6 +1,13 @@
 html,body{
-    background: #007bff;
-    background: linear-gradient(to right, #0062E6, #33AEFF);
+    /* background: grey; */
+    /* background: linear-gradient(to right, #0062E6, #33AEFF); */
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
+    /* background-image: url(../images/img3.jpg); */
+    /* background-repeat: ; */
+    background-size: cover;
     padding: 10px;
     height: 100%;
     
@@ -17,7 +24,7 @@ html,body{
     display: flex;
     gap: 54pc;
     border-radius: 15px;
-    /* opacity: 0.8; */
+    opacity: 0.6;
 }
 #homebtn{
     color: #0d6efd;
