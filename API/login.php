@@ -1,13 +1,12 @@
 <?php
 
-session_start();
-require ("connect.php");
+$db = new SQLite3('../db/online_voting_system.db');
 
 $mobile = $_POST['mobile'];
 $password = $_POST['password'];
 $role = $_POST['role'];
 
-if (!$connect) {
+if (!$db) {
     echo '
                 <script>
                     alert("Could not Login");
@@ -15,32 +14,26 @@ if (!$connect) {
             ';
 }
 
-$check = mysqli_query($connect, "SELECT * FROM userdata WHERE mobile = '$mobile' AND binary password = '$password' AND role = '$role'");
+$check = $db->query("SELECT * FROM userdata WHERE mobile = '$mobile' AND password = '$password' AND role = '$role'");
 
-if (mysqli_num_rows($check) > 0) {
-    $usersdata = mysqli_fetch_array($check);
-    $groups = mysqli_query($connect, "SELECT * FROM userdata WHERE role=2 ");
-    $groupdata = mysqli_fetch_all($groups, MYSQLI_ASSOC);
+if ($check->fetchArray(SQLITE3_ASSOC)) {
+    $usersdata = $db->querySingle("SELECT * FROM userdata WHERE mobile = '$mobile'", true);
+    $groups = $db->query("SELECT * FROM userdata WHERE role=2 ");
+    $groupdata = [];
+    while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
+        $groupdata[] = $row;
+    }
 
     $_SESSION['usersdata'] = $usersdata;
     $_SESSION['groupdata'] = $groupdata;
 
-    if ($role == 1) {
+    if ($role == 1 || $role == 2) {
         echo '
                 <script>
                     window.location.replace("../Routes/dashboard.php");
                 </script>
-            ';
-    } else if ($role == 2) {
-        echo '
-                <script>
-                    window.location.replace("../Routes/dashboard.php");
-                </script>
-                
             ';
     }
-
-
 } else {
     echo '
         <script>
@@ -49,6 +42,3 @@ if (mysqli_num_rows($check) > 0) {
         </script>        
         ';
 }
-
-
-?>

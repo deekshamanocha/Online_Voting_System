@@ -1,5 +1,6 @@
 <?php
-include ("connect.php");
+
+$db = new SQLite3('../db/online_voting_system.db');
 
 $name = $_POST['name'];
 $number = $_POST['number'];
@@ -12,17 +13,17 @@ $tmp_name = $_FILES['photo']['tmp_name'];
 $role = $_POST['role'];
 
 if ($password == $confirmpassword) {
-    move_uploaded_file($tmp_name, "../uploads/$imag e");
-    $mobiles = mysqli_query($connect, "select mobile from userdata where mobile =('$number')") or die(mysqli_error($con));
-    if ($mobiles->num_rows > 0) {
+    move_uploaded_file($tmp_name, "../uploads/$image");
+    $mobiles = $db->querySingle("SELECT mobile FROM userdata WHERE mobile='$number'");
+    if ($mobiles) {
         echo '
-        <script> alert("Mobile number already exits");
-        window.location = "../Routes/registeration.html";
-        </script>
-        ';
+        <script> 
+            alert("Mobile number already exists"); 
+            window.location = "../Routes/registeration.html"; 
+        </script>';
         exit();
     }
-    $insert = mysqli_query($connect, "INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUE ('$name','$number','$password','$gender','$address','$image','$role',0,0)");
+    $insert = $db->exec("INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUES ('$name','$number','$password','$gender','$address','$image','$role',0,0)");
     if ($insert) {
         echo '
             <script>
@@ -31,22 +32,19 @@ if ($password == $confirmpassword) {
             </script>                
         ';
     } else {
-        echo '
+        $error_message = $db->lastErrorMsg();
+        echo "
             <script>
-                alert("Some error occured!");
-                window.location = "../Routes/registeration.html";
-            </script>                
-        ';
+                alert('Error: $error_message');
+                window.location = '../Routes/registeration.html';
+            </script>
+        ";
     }
 } else {
     echo '
-            <script>
-                alert("password and confirm passowrd does not match");
-                window.location = "../Routes/registeration.html";
-            </script>                
-        ';
+        <script>
+            alert("Password and confirm password do not match");
+            window.location = "../Routes/registeration.html";
+        </script>
+    ';
 }
-
-
-
-?>
