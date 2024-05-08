@@ -1,15 +1,18 @@
 body {
     text-align: center;
-    background-color: #D8AE7E;
+    /* background-color: rgb(93, 92, 92);*/
+    background-image: url(../images/img14.jpg);
+    background-size: cover;
+    position: relative;
 }
 
 h1 {
     font-family: 'Courier New', Courier, monospace;
-    background-color: bisque;
+    /* background-color: bisque; */
     font-weight: bolder;
     font-style: italic;
-    font-size: xxx-large;
-
+    font-size: 4pc;
+    color: chocolate;
 }
 
 #bck-logout {
