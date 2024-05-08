@@ -2,13 +2,12 @@ html,
 body {
     /* background: grey; */
     /* background: linear-gradient(to right, #0062E6, #33AEFF); */
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-
-
-    /* background-image: url(../images/img3.jpg); */
-    /* background-repeat: ; */
+    /* background-color: black ; */
+    /* background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); */
+    background-image: url(../images/img16.jpg);
     background-size: cover;
+    /* background-repeat: ; */
+    /* background-size: cover; */
     padding: 10px;
     height: 100%;
 
@@ -30,11 +29,13 @@ body {
 }
 
 #homebtn {
-    color: #0d6efd;
+    color: black;
+    /* #0d6efd */
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: white;
-    border: 2px solid #0961FA;
+    border: 2px solid red;
+    /* #0961FA */
     padding: 6px;
     margin: 6px;
     border-radius: 10px;
@@ -43,7 +44,8 @@ body {
 }
 
 #homebtn:hover {
-    background-color: #0961FA;
+    background-color: red;
+    /* #0961FA */
     color: white;
 }
 
@@ -51,7 +53,7 @@ body {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: white;
-    border: 2px solid blue;
+    border: 2px solid red;
     padding: 5px;
     margin: 5px;
     border-radius: 13px;
@@ -62,9 +64,10 @@ body {
 #signup {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #0d6efd;
+    background-color: red;
+    /* #0d6efd */
     color: white;
-    border: 2px solid blue;
+    border: 2px solid white;
     padding: 5px;
     margin: 5px;
     border-radius: 13px;
