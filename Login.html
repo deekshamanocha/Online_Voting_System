@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,7 +21,7 @@
     <div id="container">
         <div id="headersection">
             <h1>ONLINE VOTING SYSTEM</h1>
-            <!-- <hr> -->
+        
         </div>
 
         <div id="bodysection">
@@ -29,9 +29,9 @@
             <form id="mform" action="./API/login.php" method="post" enctype="multipart/form-data">
                 <fieldset>
 
-                    <input type="tel" name="mobile" id="" placeholder="Enter Mobile Number" maxlength="10"
+                    <input type="tel" name="mobile" id="mobile-detail" placeholder="Enter Mobile Number" maxlength="10"
                         required><br><br>
-                    <input type="password" name="password" id="" placeholder="Enter password" required><br><br>
+                    <input type="password" name="password" id="password-detail" placeholder="Enter password" required><br><br>
                     <select name="role" id="" required>
                         <option value="0">Select option</option>
                         <option value="1">Voter</option>
@@ -62,6 +62,61 @@
 
     </script>
 
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online voting system</title>
+    <link rel="stylesheet" href="CSS\style.css">
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="headersection">
+            <h1>ONLINE VOTING SYSTEM</h1>
+        </div>
+
+        <div id="bodysection">
+            <h2>LOGIN DETAILS</h2>
+            <form id="mform" action="./API/login.php" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <input type="tel" name="mobile" id="mobile-detail" placeholder="Enter Mobile Number" maxlength="10"
+                        required><br><br>
+                    <input type="password" name="password" id="password-detail" placeholder="Enter password" required><br><br>
+                    <select name="role" id="" required>
+                        <option value="0">Select option</option>
+                        <option value="1">Voter</option>
+                        <option value="2">Group</option>
+                    </select><br><br>
+                    <button type="submit" onclick="incAttempts()">LOGIN</button><br><br>
+                    <p>New User?<a href="Routes/registeration.html">Register Here</a></p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script>
+        const imtitle = document.querySelector('#mtitle');
+        const imform = document.querySelector('#imform');
+
+        let attempts = window.localStorage.getItem("attempts") || 0;
+        attempts = parseInt(attempts);
+        if (attempts >= 3) {
+            imtitle.innerHTML = "You have reached maximum number of attempts allowed";
+            imform.setAttribute('disabled', 'disabled');
+        }
+
+        function incAttempts() {
+            let attempts = window.localStorage.getItem("attempts") || 0;
+            attempts = parseInt(attempts);
+            window.localStorage.setItem("attempts", attempts + 1);
+        }
+    </script>
 </body>
 
 </html>
