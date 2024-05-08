@@ -40,7 +40,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
             </div>
 
             <h1>
-                <marquee behavior="" direction=" ">Online Voting System</marquee>
+                <marquee behavior="" direction=" ">Election is Live Now</marquee>
             </h1>
             <script>
             function backbutton() {
@@ -62,17 +62,17 @@ if ($_SESSION['usersdata']['status'] == 0) {
             </script>
 
         </div>
-    
+
         <div id="user-profile">
 
         </div>
 
         <div id="group">
-    <?php
+            <?php
     if ($_SESSION['groupdata']) {
         for ($i = 0; $i < count($groupdata); $i++) {
             ?>
-            
+
             <div class="card">
                 <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" class="card-image">
                 <div class="card-content">
@@ -83,7 +83,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
                         <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>">
                         <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>">
                         <input type="submit" name="votebutton" value="VOTE" class="vote-button"
-                               <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?>> <br><br><br>
+                            <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?>> <br><br><br>
                     </form>
                 </div>
             </div>
@@ -98,7 +98,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
         ';
     }
     ?>
-</div>
+        </div>
 
     </div>
 

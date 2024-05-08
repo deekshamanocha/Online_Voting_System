@@ -1,4 +1,5 @@
-html,body{
+html,
+body {
     /* background: grey; */
     /* background: linear-gradient(to right, #0062E6, #33AEFF); */
     background-color: #8EC5FC;
@@ -10,23 +11,25 @@ html,body{
     background-size: cover;
     padding: 10px;
     height: 100%;
-    
+
 }
-#bodysection{
+
+#bodysection {
     display: flex;
     gap: 170px;
 }
 
-#headersection{
+#headersection {
     background-color: #191919;
-/* #FF8A08 */
+    /* #FF8A08 */
     height: 4pc;
     display: flex;
     gap: 54pc;
     border-radius: 15px;
     opacity: 0.6;
 }
-#homebtn{
+
+#homebtn {
     color: #0d6efd;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -38,11 +41,13 @@ html,body{
     width: 7pc;
     height: 3pc;
 }
-#homebtn:hover{
+
+#homebtn:hover {
     background-color: #0961FA;
     color: white;
 }
-#signin{
+
+#signin {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: white;
@@ -53,7 +58,8 @@ html,body{
     width: 7pc;
     height: 3pc;
 }
-#signup{
+
+#signup {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #0d6efd;
@@ -65,18 +71,18 @@ html,body{
     width: 7pc;
     height: 3pc;
 }
+
 #signin span,
-#signup span
-{
+#signup span {
 
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
 }
+
 #signin span:after,
-#signup span:after 
-{
+#signup span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -84,38 +90,40 @@ html,body{
     right: -20px;
     transition: 0.5s;
 }
+
 #signin:hover span,
-#signup:hover span
-{
+#signup:hover span {
     padding-right: 25px;
 }
 
 #signin:hover span:after,
-#signup:hover span:after 
-{
+#signup:hover span:after {
     opacity: 1;
     right: 0;
 }
-#partyimg{
+
+#partyimg {
     width: 298.5px;
     height: 300px;
 }
-#candidateimg{
+
+#candidateimg {
     width: 7pc;
     height: 9pc;
     border: 3px solid color-mix(in srgb-linear, red 70%, yellow 30%);
     border-radius: 10px;
 }
+
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
     background-color: transparent;
     width: 300px;
     height: 300px;
-    border: 2px solid  black;
+    border: 2px solid black;
     /* border: none; */
-    perspective: 1000px; 
+    perspective: 1000px;
 }
-  
+
 /* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
@@ -125,118 +133,133 @@ html,body{
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
     transform: rotatey(180deg);
 }
-  
-  /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
+    -webkit-backface-visibility: hidden;
+    /* Safari */
     backface-visibility: hidden;
 }
-  
-  /* Style the front side (fallback if image is missing) */
+
+/* Style the front side (fallback if image is missing) */
 .flip-card-front {
     background-color: #bbb;
     color: black;
 }
-  
-  /* Style the back side */
+
+/* Style the back side */
 .flip-card-back {
     background-color: dodgerblue;
     color: white;
     transform: rotateY(180deg);
 }
-#coloumn{
+
+#coloumn {
     float: left;
     gap: 10pc;
     /* width: 25%; */
     /* padding: 0 10px; */
-      
+
 }
 
 /* CSS FOR LIST OF CANDIDATES */
 
 .overlay {
-  height: 0%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.8);
-  overflow-y: hidden;
-  transition: 0.5s;
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: hidden;
+    transition: 0.5s;
 }
 
 .overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
 }
 
 .overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
 }
 
 .overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
 }
 
 @media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-}
+    .overlay {
+        overflow-y: auto;
+    }
+
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
 
 }
+
 #page-content {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
-  
-#livearea{
-    background-color: #191919; 
-    width: 15pc;;
+
+#livearea {
+    background-color: #191919;
+    width: 15pc;
+    ;
     /* padding: 2px; */
     border-radius: 10px;
     align-self: center;
     text-align: center;
     opacity: 0.9;
 }
-#live{
+
+#live {
     text-align: center;
     color: red;
     animation: blinker 1.5s linear infinite;
     font-family: "Jersey 25 Charted";
     font-weight: 100;
 }
+
 @keyframes blinker {
     50% {
         opacity: 0;
     }
-};
+}
 
+;

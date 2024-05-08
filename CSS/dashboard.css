@@ -5,12 +5,13 @@
 
 
 }
-#group{
+
+#group {
     display: flex;
     flex-direction: row;
-    gap: 10px
-    ;
+    gap: 10px;
 }
+
 #pname,
 #nvotes,
 #votestatus {
@@ -26,6 +27,7 @@
     font-weight: bolder;
     font-size: larger;
 }
+
 #group {
     display: flex;
     flex-wrap: wrap;
@@ -34,12 +36,14 @@
 
 .card {
     /* flex: 1 0 calc(25% - 20px); 25% width with margin */
-    width: calc(25% - 20px); /* 25% width with margin */
+    width: calc(25% - 20px);
+    /* 25% width with margin */
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #AC7D88;
 }
 
 .card-image {
