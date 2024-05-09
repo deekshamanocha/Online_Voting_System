@@ -24,7 +24,6 @@ if ($_SESSION['usersdata']['status'] == 0) {
 
 <head>
     <title>Online voting system - Dashboard</title>
-    <link rel="stylesheet" href="../CSS/app.css">
     <link rel="stylesheet" href="../CSS/dashboard.css">
 </head>
 
@@ -81,7 +80,6 @@ if ($_SESSION['usersdata']['status'] == 0) {
             <div class="card">
                 <img src="../uploads/<?php echo $party_info['photo'] ?>" class="card-image">
                 <div class="card-content">
-                    <?php echo print_r($groupdata) ?>
                     <p class="party-name">Party Name: <?php echo $party_info['name'] ?> </p>
                     <p class="vote-count">Number of Votes: <?php echo $party_info['votes'] ?> </p>
                     <form action="../API/vote.php" method="post">

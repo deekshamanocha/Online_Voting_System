@@ -1,32 +1,39 @@
-#pimage {
-    float: left;
-    height: 200px;
-    width: 200px;
-
-
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(../images/img27.jpg);
+    background-size: cover;
+}
+#mainsection {
+    max-width: 1200px;
+    margin:  auto;
+    padding: 20px;
 }
 
-#group {
+#headersection {
+    text-align: center;
+    margin-bottom: 30px;
+    color: red;
+}
+
+#bck-logout {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-#pname,
-#nvotes,
-#votestatus {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* font-color: white; */
-
+#bck-logout button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#votebutton {
-    padding: 8px;
-    border-radius: 10px;
-    width: 5pc;
-    background-color: rgba(72, 135, 231, 0.989);
-    font-weight: bolder;
-    font-size: larger;
+#bck-logout button:hover {
+    background-color: #ff403e;
 }
 
 #group {
@@ -35,62 +42,68 @@
     justify-content: center;
 }
 
+
 .card {
-    /* flex: 1 0 calc(25% - 20px); 25% width with margin */
-    width: calc(25% - 20px);
-    /* 25% width with margin */
-    margin: 10px;
-    /* border: 1px solid  midnightblue; */
-    background-color: rgba(255, 255, 255, 0.741);
-    opacity: 0.9;
-    border-radius: 5px;
-    padding: 15px;
+    background-color: #fff;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #AC7D88;
+    margin: 15px;
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translate(5px);
 }
 
 .card-image {
     width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    opacity: 1;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .card-content {
-    text-align: left;
+    padding: 20px;
 }
 
 .party-name {
+    font-size: 20px;
     font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .vote-count {
+    font-size: 16px;
+    margin-bottom: 15px;
     color: #555;
 }
 
 .vote-status {
-    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #555;
 }
 
 .vote-button {
-    background-color: #007bff;
-    color: black;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.vote-button[disabled] {
-    background-color: rgb(254, 104, 104);
+.vote-button:hover {
+    background-color: #45a049;
+}
+
+.vote-button:disabled {
+    background-color: red;
     cursor: not-allowed;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    /* Adding a shadow effect */
-    transform: translateY(-5px);
-    /* Moving the card slightly upwards */
-    border: 1px solid black;
-}

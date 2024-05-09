@@ -7,39 +7,24 @@ body{
 }
 #bodysection {
     max-width: 400px;
-    margin: 0 auto;
+    margin:  auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-      
-#bodysection form {
-    text-align: center;
-}
-
-
-
-
 #headersection{
     padding: 10px;
 }
-#container{
-    width: 100%;
-}
+
+
 #headersection h1{
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* input{
-    padding: 10px;
-    border-radius: 20px
-} */
 select{
-    padding: 10px;
     font-size: 18px;
     background-color: #FBEFE5;
-    /* border: none; */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #bodysection input[type="tel"],
@@ -53,22 +38,6 @@ select{
     background-color: #FBEFE5;
 }
 
-button{
-    font-weight: bolder;
-    padding: 10px;
-    width: 8pc;
-    border-radius: 14px;
-    font-size: larger;
-}
-button:hover{
-    background-color: rgb(32, 112, 240);;
-    border-color: rgb(32, 112, 240);
-    border-width: 5px;
-}
-a{
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 #bodysection p {
     text-align: center;
     margin-top: 15px;
@@ -80,11 +49,6 @@ a{
     text-align: center;
     margin-bottom: 20px;
 } 
-
-#mform * {
-    cursor: inherit;
-}
-
 fieldset {
     border: 0 none;
 }
@@ -99,11 +63,7 @@ fieldset {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    
-
     font-weight: bolder;
-    width: 8pc;
-    /* border-radius: 14px; */
     font-size: larger;
 
 }
@@ -111,12 +71,11 @@ fieldset {
 #bodysection button[type="submit"]:hover {
     background-color: #0056b3;
 }
-
-
-
 #bodysection p a {
     color: #007bff;
     text-decoration: none;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 }
 
