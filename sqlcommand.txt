@@ -14,3 +14,19 @@ CREATE TABLE IF NOT EXISTS userdata (
     status INT(1),
     votes INT(100)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
