@@ -7,12 +7,15 @@ $t_votes = $votes + 1;
 $partyid = $_POST['pid'];
 $user_id = $_SESSION['usersdata']['id'];
 
-$update_vote = mysqli_query($connect, "UPDATE userdata SET votes='$t_votes' WHERE id ='$partyid' ");
-$update_status = mysqli_query($connect, "UPDATE userdata SET status=1 WHERE id='$user_id' ");
+$update_vote = $db->exec("UPDATE userdata SET votes='$t_votes' WHERE id ='$partyid'");
+$update_status = $db->exec("UPDATE userdata SET status=1 WHERE id='$user_id'");
 
-if ($update_vote and $update_status) {
-    $groups = mysqli_query($connect, "SELECT * FROM userdata WHERE role=2 ");
-    $groupdata = mysqli_fetch_all($groups, MYSQLI_ASSOC);
+if ($update_vote !== false && $update_status !== false) {
+    $groups = $db->query("SELECT * FROM userdata WHERE role=2 ");
+    $groupdata = [];
+    while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
+        $groupdata[] = $row;
+    }
 
     $_SESSION['usersdata']['status'] = 1;
     $_SESSION['groupdata'] = $groupdata;
@@ -23,14 +26,12 @@ if ($update_vote and $update_status) {
             window.location = "../Routes/dashboard.php";
         </script>
     ';
-
 } else {
     echo '
         <script>
-            alert("Error occured! Vote");
+            alert("Error occurred! Vote");
             window.location = "../Routes/dashboard.php";
         </script>
     ';
 }
-
 ?>

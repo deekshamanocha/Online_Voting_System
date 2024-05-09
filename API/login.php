@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require ("connect.php");
@@ -15,25 +16,42 @@ if (!$db) {
             ';
 }
 
-$check = $db->query("SELECT * FROM userdata WHERE mobile = '$mobile' AND password = '$password' AND role = '$role'");
+$statement = $db->prepare("SELECT * FROM userdata WHERE mobile = :mobile AND role = :role");
+$statement->bindValue(':mobile', $mobile);
+$statement->bindValue(':role', $role);
+$result = $statement->execute();
 
-if ($check->fetchArray(SQLITE3_ASSOC)) {
-    $usersdata = $db->querySingle("SELECT * FROM userdata WHERE mobile = '$mobile'", true);
-    $groups = $db->query("SELECT * FROM userdata WHERE role=2 ");
-    $groupdata = [];
-    while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
-        $groupdata[] = $row;
-    }
+$row = $result->fetchArray(SQLITE3_ASSOC);
 
-    $_SESSION['usersdata'] = $usersdata;
-    $_SESSION['groupdata'] = $groupdata;
+if ($row) {
+    // Verify password
+    if (password_verify($password, $row['password'])) {
+        $usersdata = $row;
+        $groups = $db->query("SELECT * FROM userdata WHERE role = 2 ");
+        $groupdata = [];
+        while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
+            $groupdata[] = $row;
+        }
 
-    if ($role == 1 || $role == 2) {
-        echo '
+        $_SESSION['usersdata'] = $usersdata;
+        $_SESSION['groupdata'] = $groupdata;
+
+        if ($role == 1 || $role == 2) {
+            echo '
                 <script>
                     window.location.replace("../Routes/dashboard.php");
                 </script>
             ';
+            exit; // Stop further execution
+        }
+    } else {
+        echo '
+            <script>
+                alert("Wrong password!");
+                window.location = "../Login.html";
+            </script>        
+            ';
+        exit; // Stop further execution
     }
 } else {
     echo '
@@ -42,4 +60,6 @@ if ($check->fetchArray(SQLITE3_ASSOC)) {
             window.location = "../Login.html";
         </script>        
         ';
+    exit; // Stop further execution
 }
+?>

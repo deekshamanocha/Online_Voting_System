@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS userdata (
     name TEXT,
     mobile BIGINT(10),
     gender INT(1),
-    password VARCHAR(50),
+    password VARCHAR(255),
     address VARCHAR(100),
     photo VARCHAR(255),
     role INT(1),

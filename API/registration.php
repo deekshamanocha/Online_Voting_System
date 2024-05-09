@@ -23,7 +23,8 @@ if ($password == $confirmpassword) {
         </script>';
         exit();
     }
-    $insert = $db->exec("INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUES ('$name','$number','$password','$gender','$address','$image','$role',0,0)");
+    $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+    $insert = $db->exec("INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUES ('$name','$number','$hash_pass','$gender','$address','$image','$role',0,0)");
     if ($insert) {
         echo '
             <script>
