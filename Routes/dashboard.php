@@ -1,13 +1,16 @@
 <?php
 session_start();
 
+require ("../API/connect.php");
+
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
-    header("Location: ../Login.html", TRUE, 301);
+    header("Location: ../Login.html");
     exit();
 }
 
 $usersdata = $_SESSION['usersdata'];
 $groupdata = $_SESSION['groupdata'];
+
 
 if ($_SESSION['usersdata']['status'] == 0) {
     $status = 'Not voted';
@@ -70,18 +73,21 @@ if ($_SESSION['usersdata']['status'] == 0) {
         <div id="group">
             <?php
     if ($_SESSION['groupdata']) {
-        for ($i = 0; $i < count($groupdata); $i++) {
+        foreach ($groupdata as $party) {
+            $party_id = $party['id'];
+            $party_info = $db->querySingle("SELECT * FROM userdata WHERE id='$party_id'", true);    
             ?>
 
             <div class="card">
-                <img src="../uploads/<?php echo $groupdata[$i]['photo'] ?>" class="card-image">
+                <img src="../uploads/<?php echo $party_info['photo'] ?>" class="card-image">
                 <div class="card-content">
-                    <p class="party-name">Party Name: <?php echo $groupdata[$i]['name'] ?> </p>
-                    <p class="vote-count">Number of Votes: <?php echo $groupdata[$i]['votes'] ?> </p>
+                    <?php echo print_r($groupdata) ?>
+                    <p class="party-name">Party Name: <?php echo $party_info['name'] ?> </p>
+                    <p class="vote-count">Number of Votes: <?php echo $party_info['votes'] ?> </p>
                     <form action="../API/vote.php" method="post">
                         <p class="vote-status">Status: <?php echo $status ?> </p>
-                        <input type="hidden" name="pvote" value="<?php echo $groupdata[$i]['votes'] ?>">
-                        <input type="hidden" name="pid" value="<?php echo $groupdata[$i]['id'] ?>">
+                        <input type="hidden" name="pvote" value="<?php echo $party_info['votes'] ?>">
+                        <input type="hidden" name="pid" value="<?php echo $party_info['id'] ?>">
                         <input type="submit" name="votebutton" value="VOTE" class="vote-button"
                             <?php if ($_SESSION['usersdata']['status'] == 1) {echo 'disabled';} ?>> <br><br><br>
                     </form>
@@ -89,13 +95,6 @@ if ($_SESSION['usersdata']['status'] == 0) {
             </div>
             <?php
         }
-    } else {
-        echo '
-            <script>
-                alert("Error occurred! Hello there!");
-                window.location = "../Login.html";
-            </script>
-        ';
     }
     ?>
         </div>

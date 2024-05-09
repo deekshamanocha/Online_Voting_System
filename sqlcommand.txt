@@ -3,9 +3,10 @@ CREATE DATABASE IF NOT EXISTS online_voting_system;
 USE online_voting_system;
 
 CREATE TABLE IF NOT EXISTS userdata (
-    id INT(10) PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     mobile BIGINT(10),
+    gender INT(1),
     password VARCHAR(50),
     address VARCHAR(100),
     photo VARCHAR(255),

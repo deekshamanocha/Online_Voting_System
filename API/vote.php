@@ -27,7 +27,7 @@ if ($update_vote and $update_status) {
 } else {
     echo '
         <script>
-            alert("Error occured! hello");
+            alert("Error occured! Vote");
             window.location = "../Routes/dashboard.php";
         </script>
     ';
