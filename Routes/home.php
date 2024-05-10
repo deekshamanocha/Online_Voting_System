@@ -1,3 +1,9 @@
+<?php
+
+require ("../API/connect.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25+Charted&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./CSS/home.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <script src="../CSS/bootstrap.min.js">
+    </script>
     <title>Online Voting System</title>
 
 </head>
@@ -30,12 +34,19 @@
     </div>
     <br>
     <div id="livearea">
-        <h2 id="live">ELECTION IS LIVE</h2>
+        <h2 id="live">
+            <?php
+            if ($election_is_live == true) {
+                echo "ELECTION IS LIVE";
+            } else {
+                echo "ELECTION ENDED";
+            }
+            ?>
+        </h2>
     </div>
-    
+
     <b><span style="font-size:30px;cursor:pointer;color: black;" onclick="openNav()">&#9776; Candidate List</span></b>
 
-    <!-- CODE FOR DROPDOWN LIDY OF CANDIDATES -->
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
@@ -45,12 +56,12 @@
                     <div class="flip-card-inner">
 
                         <div class="flip-card-front">
-                            <img src="./images/bjp.jpg" alt="Avatar" id="partyimg">
+                            <img src="../images/bjp.jpg" alt="Avatar" id="partyimg">
                         </div>
                         <div class="flip-card-back">
                             <h1>Candidate Name</h1>
                             <p style="font-size: large;">Narendra Damodardas Modi</p>
-                            <img src="./images/narendra modi ji.jpg" alt="" id="candidateimg">
+                            <img src="../images/narendra modi ji.jpg" alt="" id="candidateimg">
                         </div>
                     </div>
                 </div>
@@ -58,12 +69,12 @@
                 <div class="flip-card" id="coloumn">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="./images/congress.jpg" alt="Avatar" id="partyimg">
+                            <img src="../images/congress.jpg" alt="Avatar" id="partyimg">
                         </div>
                         <div class="flip-card-back">
                             <h1>Candidate Name</h1>
                             <p style="font-size: large;">Rahul Gandhi</p>
-                            <img src="./images/rahul gandhi.jpeg" alt="" id="candidateimg">
+                            <img src="../images/rahul gandhi.jpeg" alt="" id="candidateimg">
                         </div>
                     </div>
                 </div>
@@ -71,12 +82,12 @@
                 <div class="flip-card" id="coloumn">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="./images/aap.jpeg" alt="Avatar" id="partyimg">
+                            <img src="../images/aap.jpeg" alt="Avatar" id="partyimg">
                         </div>
                         <div class="flip-card-back">
                             <h1>Candidate Name</h1>
                             <p style="font-size: large;">Arvind Kejriwal</p>
-                            <img src="./images/Arvind kejriwal.jpg" alt="" id="candidateimg">
+                            <img src="../images/Arvind kejriwal.jpg" alt="" id="candidateimg">
                         </div>
                     </div>
                 </div>
@@ -87,26 +98,25 @@
 
     <div id="page-content">
     </div>
-    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <footer id="sticky-footer" class="flex-shrink-0  text-dark-50">
         <div class="container text-center">
-            <small>Copyright &copy; Aayush kansal</small>
+            <small>Copyright &copy; All Rights Reserved</small>
         </div>
     </footer>
 
 
     <script>
-
         function homepage() {
-            window.location = "home.html"
+            window.location = "Routes/home.php"
         }
 
         function signin() {
             document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            window.location.replace("./Login.html");
+            window.location.replace("../Login.html");
         }
 
         function signUp() {
-            window.location = "./Routes/registeration.html";
+            window.location = "./registeration.html";
             // alert("button clicked");
         }
 
@@ -117,7 +127,6 @@
         function closeNav() {
             document.getElementById("myNav").style.height = "0%";
         }
-
     </script>
 </body>
 

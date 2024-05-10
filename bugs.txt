@@ -54,3 +54,6 @@ To do:
   // Print the generated hash code
   echo "Generated hash code: ".$hash; 
 ?>
+
+
+<p class="vote-count">Number of Votes: <?php echo $party_info['votes'] ?> </p>
