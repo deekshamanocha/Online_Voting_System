@@ -1,5 +1,6 @@
 <?php
 session_start();
+require ("../API/connect.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     header("Location: ../Login.html", TRUE, 301);
@@ -24,6 +25,7 @@ $usersdata = $_SESSION['usersdata'];
             <button id="back" onclick="backbutton()"> <span> Back </span></button>
             <div class="rt-nav">
                 <button id="prof" onclick="profbutton()"> <span> Profile </span></button>
+                <button id="res" onclick="resbutton()"> <span> Result </span></button>
                 <button id="logout" onclick="logout()"> <span>Logout</span> </button>
                 <button id="home" onclick="homebutton()"> <span>Home</span> </button>
 
@@ -35,25 +37,33 @@ $usersdata = $_SESSION['usersdata'];
             <marquee behavior="" direction=" ">Online Voting System</marquee>
         </h1>
         <script>
-        function backbutton() {
-            window.history.back();
-            // alert("button clicked");
-        }
+            function backbutton() {
+                window.history.back();
+                // alert("button clicked");
+            }
 
-        function logout() {
-            document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            window.location.replace("../Login.html");
-        }
+            function logout() {
+                document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.replace("../Login.html");
+            }
 
-        function homebutton() {
-            window.location = "../home.html"
-            // alert("button clicked");
-        }
+            function homebutton() {
+                window.location = "../Routes/home.php"
+                // alert("button clicked");
+            }
 
-        function profbutton() {
-            window.location = "./Profile.php"
-            // alert("button clicked");
-        }
+            function resbutton() {
+                if (is_election_live) {
+                    alert('Elections are Live. Results not announced yet.');
+                } else {
+                    window.location = "./result.php";
+                }
+            }
+
+            function profbutton() {
+                window.location = "./Profile.php"
+                // alert("button clicked");
+            }
         </script>
     </div>
     <div class="profile">

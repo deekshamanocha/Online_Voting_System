@@ -3,9 +3,10 @@ body {
     background-image: url(../images/img27.jpg);
     background-size: cover;
 }
+
 #mainsection {
     max-width: 1200px;
-    margin:  auto;
+    margin: auto;
     padding: 20px;
 }
 
@@ -103,7 +104,6 @@ body {
 }
 
 .vote-button:disabled {
-    background-color: red;
+    background-color: gray;
     cursor: not-allowed;
 }
-

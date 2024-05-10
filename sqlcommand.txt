@@ -16,6 +16,9 @@ CREATE TABLE IF NOT EXISTS userdata (
 );
 
 
+CREATE TABLE IF NOT EXISTS meta (timeend TEXT);
+2024-05-09T14:30:00
+
 
 
 
