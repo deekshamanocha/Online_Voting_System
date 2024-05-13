@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online voting system</title>
-    <link rel="stylesheet" href="CSS\style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
 
 </head>
 
@@ -17,7 +17,7 @@
 
         <div id="bodysection">
             <h2>LOGIN DETAILS</h2>
-            <form id="mform" action="./API/login.php" method="post" enctype="multipart/form-data">
+            <form id="mform" action="../API/login.php" method="post" enctype="multipart/form-data">
                 <fieldset>
                     <input type="tel" name="mobile" id="mobile-detail" placeholder="Enter Mobile Number" maxlength="10"
                         required><br><br>

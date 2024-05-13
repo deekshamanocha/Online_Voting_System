@@ -3,7 +3,7 @@ session_start();
 require ("../API/connect.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
-    header("Location: ../Login.html", TRUE, 301);
+    header("Location: .././Routes/login.php", TRUE, 301);
     exit();
 }
 
@@ -39,12 +39,14 @@ $usersdata = $_SESSION['usersdata'];
         <script>
             function backbutton() {
                 window.history.back();
-                // alert("button clicked");
+                document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.replace(".././Routes/login.php");
             }
+
 
             function logout() {
                 document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.replace("../Login.html");
+                window.location.replace(".././Routes/login.php");
             }
 
             function homebutton() {

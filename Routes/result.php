@@ -4,7 +4,7 @@ session_start();
 require ("../API/connect.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
-    header("Location: ../Login.html", TRUE, 301);
+    header("Location: .././Routes/login.php", TRUE, 301);
     exit();
 }
 

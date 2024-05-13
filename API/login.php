@@ -48,7 +48,7 @@ if ($row) {
         echo '
             <script>
                 alert("Wrong password!");
-                window.location = "../Login.html";
+                window.location = "../Routes/login.php";
             </script>        
             ';
         exit; // Stop further execution
@@ -57,9 +57,8 @@ if ($row) {
     echo '
         <script>
             alert("User not found or Wrong details!");
-            window.location = "../Login.html";
+            window.location = "../Routes/login.php";
         </script>        
         ';
     exit; // Stop further execution
 }
-?>

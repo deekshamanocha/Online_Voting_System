@@ -112,7 +112,7 @@ require ("../API/connect.php");
 
         function signin() {
             document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            window.location.replace("../Login.html");
+            window.location.replace(".././Routes/login.php");
         }
 
         function signUp() {

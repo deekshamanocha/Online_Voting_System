@@ -4,7 +4,7 @@ session_start();
 require ("../API/connect.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
-    header("Location: ../Login.html");
+    header("Location: .././Routes/login.php");
     exit();
 }
 
@@ -57,11 +57,16 @@ if ($_SESSION['usersdata']['status'] == 0) {
             <script>
                 function backbutton() {
                     window.history.back();
+                    document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location.replace(".././Routes/login.php");
                 }
 
-                function homebutton() {
-                    window.location = "../Routes/home.php";
+
+                function logout() {
+                    document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location.replace(".././Routes/login.php");
                 }
+
 
                 function profbutton() {
                     window.location = "./Profile.php";
@@ -99,7 +104,6 @@ if ($_SESSION['usersdata']['status'] == 0) {
                         <img src="../uploads/<?php echo $party_info['photo'] ?>" class="card-image">
                         <div class="card-content">
                             <p class="party-name">Party Name: <?php echo $party_info['name'] ?> </p>
-
                             <form action="../API/vote.php" method="post">
                                 <p class="vote-status">Status: <?php echo $status ?> </p>
                                 <input type="hidden" name="pvote" value="<?php echo $party_info['votes'] ?>">

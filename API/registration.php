@@ -29,7 +29,7 @@ if ($password == $confirmpassword) {
         echo '
             <script>
                 alert("Registration Successful");
-                window.location = "../Login.html";
+                window.location = ".././Routes/login.php";
             </script>                
         ';
     } else {
