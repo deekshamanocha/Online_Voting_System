@@ -37,6 +37,7 @@ if ($row) {
         $_SESSION['groupdata'] = $groupdata;
 
         if ($role == 1 || $role == 2) {
+            $_SESSION['login_banned'] = 'true';
             echo '
                 <script>
                     window.location.replace("../Routes/dashboard.php");

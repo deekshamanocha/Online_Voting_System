@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online voting system</title>
     <link rel="stylesheet" href="../CSS/style.css">
-
 </head>
 
 <body>
@@ -14,11 +19,14 @@
         <div id="headersection">
             <h1>ONLINE VOTING SYSTEM</h1>
         </div>
+        <h4 id='banmsg' style='color:red;display:none;'>You account is locked due to multiple failed login attempts.
+            <br> [ Contact Admin for support ]
+        </h4>
 
         <div id="bodysection">
             <h2>LOGIN DETAILS</h2>
-            <form id="mform" action="../API/login.php" method="post" enctype="multipart/form-data">
-                <fieldset>
+            <form action="../API/login.php" method="post" enctype="multipart/form-data">
+                <fieldset id="mform">
                     <input type="tel" name="mobile" id="mobile-detail" placeholder="Enter Mobile Number" maxlength="10"
                         required><br><br>
                     <input type="password" name="password" id="password-detail" placeholder="Enter password"
@@ -34,23 +42,14 @@
             </form>
         </div>
     </div>
-    <script>
-        const imtitle = document.querySelector('#mtitle');
-        const imform = document.querySelector('#imform');
-
-        let attempts = window.localStorage.getItem("attempts") || 0;
-        attempts = parseInt(attempts);
-        if (attempts >= 3) {
-            imtitle.innerHTML = "You have reached maximum number of attempts allowed";
-            imform.setAttribute('disabled', 'disabled');
-        }
-
-        function incAttempts() {
-            let attempts = window.localStorage.getItem("attempts") || 0;
-            attempts = parseInt(attempts);
-            window.localStorage.setItem("attempts", attempts + 1);
-        }
-    </script>
+    <?php if (false && isset($_SESSION['login_banned']) && $_SESSION['login_banned'] == 'true')
+        echo "<script>
+        const ibanmsg = document.querySelector('#banmsg');
+        ibanmsg.style.display = 'block';
+        const imform = document.querySelector('#mform');
+        imform.setAttribute('disabled', 'disabled');
+    </script>";
+    ?>
 </body>
 
 </html>
