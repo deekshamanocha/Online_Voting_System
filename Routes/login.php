@@ -42,7 +42,7 @@ session_start();
             </form>
         </div>
     </div>
-    <?php if (false && isset($_SESSION['login_banned']) && $_SESSION['login_banned'] == 'true')
+    <?php if (isset($_SESSION['login_banned']) && $_SESSION['login_banned'] == 'true')
         echo "<script>
         const ibanmsg = document.querySelector('#banmsg');
         ibanmsg.style.display = 'block';
