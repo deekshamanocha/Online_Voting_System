@@ -2,6 +2,7 @@
 session_start();
 
 require ("../API/connect.php");
+require("../admin/check_election.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     header("Location: .././Routes/login.php", TRUE, 301);

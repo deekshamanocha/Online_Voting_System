@@ -37,7 +37,7 @@ session_start();
                         <option value="2">Group</option>
                     </select><br><br>
                     <button type="submit" onclick="incAttempts()">LOGIN</button><br><br>
-                    <p>New User?<a href="./registeration.html">Register Here</a></p>
+                    <p>New User?<a href="./reg.html">Register Here</a></p>
                 </fieldset>
             </form>
         </div>

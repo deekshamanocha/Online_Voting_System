@@ -1,0 +1,16 @@
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+table,th,tr,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td,th{
+    padding: 4px;
+    text-align: center;
+}
+

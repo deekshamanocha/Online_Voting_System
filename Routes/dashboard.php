@@ -2,6 +2,7 @@
 session_start();
 
 require ("../API/connect.php");
+require("../admin/check_election.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     header("Location: .././Routes/login.php");
@@ -11,7 +12,7 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
 $usersdata = $_SESSION['usersdata'];
 $groupdata = $_SESSION['groupdata'];
 
-
+// print_r($groupdata);
 if ($_SESSION['usersdata']['status'] == 0) {
     $status = 'Not voted';
 } else {
@@ -101,11 +102,11 @@ if ($_SESSION['usersdata']['status'] == 0) {
             if ($_SESSION['groupdata']) {
                 foreach ($groupdata as $party) {
                     $party_id = $party['id'];
-                    $party_info = $db->querySingle("SELECT * FROM userdata WHERE id='$party_id'", true);
+                    $party_info = $db->querySingle("SELECT * FROM candidate WHERE id='$party_id'", true);
                     ?>
 
                     <div class="card">
-                        <img src="../uploads/<?php echo $party_info['photo'] ?>" class="card-image">
+                        <img src="../uploads/CandidateUploads/<?php echo $party_info['cand_img'] ?>" class="card-image">
                         <div class="card-content">
                             <p class="party-name">Party Name: <?php echo $party_info['name'] ?> </p>
                             <form action="../API/vote.php" method="post">

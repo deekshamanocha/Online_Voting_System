@@ -1,6 +1,8 @@
 <?php
 
 require ("connect.php");
+require ("otp.php");
+require("../admin/check_election.php");
 
 $name = $_POST['name'];
 $number = $_POST['number'];
@@ -13,7 +15,7 @@ $tmp_name = $_FILES['photo']['tmp_name'];
 $role = $_POST['role'];
 
 if ($password == $confirmpassword) {
-    move_uploaded_file($tmp_name, "../uploads/$image");
+    move_uploaded_file($tmp_name, "../uploads/UserUploads/$image");
     $mobiles = $db->querySingle("SELECT mobile FROM userdata WHERE mobile='$number'");
     if ($mobiles) {
         echo '
@@ -23,6 +25,30 @@ if ($password == $confirmpassword) {
         </script>';
         exit();
     }
+
+    $otp=
+
+
+    function sendOTP($number, $otp) {
+        // Example SMS API integration (replace with your actual implementation)
+        // Use appropriate SMS API or email sending service to send OTP
+        // Example using Twilio for SMS:
+        // require_once '../vendor/autoload.php'; // Include Twilio PHP SDK
+        // $sid = 'your_twilio_sid';
+        // $token = 'your_twilio_token';
+        // $twilio = new \Twilio\Rest\Client($sid, $token);
+        // $message = $twilio->messages->create(
+        //     $number, // To number
+        //     [
+        //         'from' => 'your_twilio_number',
+        //         'body' => "Your OTP for registration: $otp"
+        //     ]
+        // );
+    }
+    sendOTP($number, $otp);
+
+
+
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
     $insert = $db->exec("INSERT INTO userdata (name,mobile,password,gender,address,photo,role,status,votes) VALUES ('$name','$number','$hash_pass','$gender','$address','$image','$role',0,0)");
     if ($insert) {

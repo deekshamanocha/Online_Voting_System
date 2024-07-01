@@ -1,7 +1,7 @@
 <?php
 
 require ("../API/connect.php");
-
+require("../admin/check_election.php");
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ require ("../API/connect.php");
         }
 
         function signUp() {
-            window.location = "./registeration.html";
+            window.location = "./reg.html";
             // alert("button clicked");
         }
 

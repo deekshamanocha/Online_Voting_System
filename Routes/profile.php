@@ -1,6 +1,7 @@
 <?php
 session_start();
 require ("../API/connect.php");
+require("../admin/check_election.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     header("Location: .././Routes/login.php", TRUE, 301);
@@ -70,7 +71,7 @@ $usersdata = $_SESSION['usersdata'];
     </div>
     <div class="profile">
         <div class="prof-img">
-            <img src="../uploads/<?php echo $usersdata['photo'] ?>" id="user-img">
+            <img src="../uploads/UserUploads/<?php echo $usersdata['photo'] ?>" id="user-img">
         </div>
         <div class="prof-details">
 

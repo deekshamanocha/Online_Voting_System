@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("connect.php");
+require("../admin/check_election.php");
 
 $votes = $_POST['pvote'];
 $t_votes = $votes + 1;

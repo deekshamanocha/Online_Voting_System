@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/home.css">
+
+    <title>Registration</title>
+</head>
+<body>
+    <div class="div">
+        <h1>Register Yourself as </h1>
+        <button id="signin" onclick="candidate()"> <span>Candidate</span> </button>
+        <button id="signup" onclick="voter()"> <span>Voter</span> </button>
+    </div>
+    <script>
+        function voter(){
+            window.location = "./registeration.html";
+        }
+        function candidate(){
+            window.location = "./candidate_register.html";
+        }
+    </script>
+</body>
+</html>
