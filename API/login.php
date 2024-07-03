@@ -50,16 +50,17 @@ if ($row) {
 
         // Set session variables
         $_SESSION['usersdata'] = $row;
-
-        if ($role == 2) { // Candidate
-            // Fetch candidate group data
-            $groups = $db->query("SELECT * FROM candidate WHERE role = 2");
-            $groupdata = [];
-            while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
-                $groupdata[] = $row;
-            }
-            $_SESSION['groupdata'] = $groupdata;
+        echo '<pre>Session usersdata: ' . print_r($_SESSION['usersdata'], true) . '</pre>';
+        
+        $groups = $db->query("SELECT * FROM candidate WHERE role = 2");
+        $groupdata = [];
+        while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
+            $groupdata[] = $row;
         }
+        $_SESSION['groupdata'] = $groupdata;
+        
+        echo '<pre>Session groupdata: ' . print_r($_SESSION['groupdata'], true) . '</pre>';
+
 
         // Redirect based on role
         if ($role == 1 || $role == 2) {
@@ -77,7 +78,7 @@ if ($row) {
         exit; // Stop further execution
     }
 } else {
-    echo '<script>alert("User not found or Wrong details!"); window.location = "../Routes/login.php";</script>';
+    // echo '<script>alert("User not found or Wrong details!"); window.location = "../Routes/login.php";</script>';
     exit; // Stop further execution
 }
 ?>

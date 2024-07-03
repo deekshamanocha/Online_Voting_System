@@ -1,7 +1,7 @@
 <?php
 
 require ("connect.php");
-require ("otp.php");
+// require ("otp.php");
 require("../admin/check_election.php");
 
 $name = $_POST['name'];
@@ -26,10 +26,10 @@ if ($password == $confirmpassword) {
         exit();
     }
 
-    $otp=
+    // $otp=
 
 
-    function sendOTP($number, $otp) {
+    // function sendOTP($number, $otp) {
         // Example SMS API integration (replace with your actual implementation)
         // Use appropriate SMS API or email sending service to send OTP
         // Example using Twilio for SMS:
@@ -44,8 +44,8 @@ if ($password == $confirmpassword) {
         //         'body' => "Your OTP for registration: $otp"
         //     ]
         // );
-    }
-    sendOTP($number, $otp);
+    // }
+    // sendOTP($number, $otp);
 
 
 
