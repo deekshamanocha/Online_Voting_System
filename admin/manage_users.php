@@ -53,7 +53,7 @@ $candidates = $db->query("SELECT * FROM candidate");
                     <td>
                         <form action="manage_users.php" method="post" style="display:inline;">
                             <input type="hidden" name="delete_user_id" value="<?php echo $row['id']; ?>">
-                            <button type="submit">Delete</button>
+                            <button type="submit">DELETE</button>
                         </form>
                     </td>
                 </tr>
