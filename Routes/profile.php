@@ -1,7 +1,7 @@
 <?php
 session_start();
 require ("../API/connect.php");
-require("../admin/check_election.php");
+// require("../admin/check_election.php");
 
 if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     header("Location: .././Routes/login.php", TRUE, 301);
@@ -17,6 +17,8 @@ $usersdata = $_SESSION['usersdata'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/userprofile.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <title>User Profile</title>
 </head>
 
@@ -25,19 +27,26 @@ $usersdata = $_SESSION['usersdata'];
         <div id="bck-logout">
             <button id="back" onclick="backbutton()"> <span> Back </span></button>
             <div class="rt-nav">
-                <button id="prof" onclick="profbutton()"> <span> Profile </span></button>
+                <!-- <button id="prof" onclick="profbutton()"> <span> Profile </span></button> -->
                 <button id="res" onclick="resbutton()"> <span> Result </span></button>
-                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
                 <button id="home" onclick="homebutton()"> <span>Home</span> </button>
+                <button id="home" onclick="dashbutton()"> <span>Dashboard</span> </button>
+                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
 
             </div>
 
         </div>
 
-        <h1>
+        <!-- <h1>
             <marquee behavior="" direction=" ">Online Voting System</marquee>
-        </h1>
+        </h1> -->
+        <h1>
+                <marquee id="electionStatusMarquee">
+                   
+                </marquee>
+            </h1>
         <script>
+            var is_election_live=false;
             function backbutton() {
                 window.history.back();
                 document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -52,6 +61,10 @@ $usersdata = $_SESSION['usersdata'];
 
             function homebutton() {
                 window.location = "../Routes/home.php"
+                // alert("button clicked");
+            }
+            function dashbutton() {
+                window.location = "../Routes/dashboard.php"
                 // alert("button clicked");
             }
 
@@ -115,7 +128,32 @@ $usersdata = $_SESSION['usersdata'];
             </table>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            // Function to fetch election status via AJAX
+            function checkElectionStatus() {
+                $.ajax({
+                    type: "GET",
+                    url: "../API/check_election_status.php",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.election_status) {
+                            $("#electionStatusMarquee").text("Election is Live Now");
+                            is_election_live=true;
+                        } else {
+                            $("#electionStatusMarquee").text("Election have ended. Results Declared");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: " + status + " - " + error);
+                    }
+                });
+            }
 
+            checkElectionStatus(); // Initial call
+            setInterval(checkElectionStatus, 1000); // Call every  seconds
+        });
+    </script>
 </body>
 
 </html>

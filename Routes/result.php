@@ -68,9 +68,9 @@ $_SESSION['groupdata'] = $groupdata;
             <button id="back" onclick="backbutton()" span> Back </span></button>
             <div class="rt-nav">
                 <button id="prof" onclick="profbutton()"> <span> Profile </span></button>
-                <button id="res" onclick="resbutton()"> <span> Result </span></button>
-                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
                 <button id="home" onclick="homebutton()"> <span>Home</span> </button>
+                <button id="home" onclick="dashbutton()"> <span>Dashboard</span> </button>
+                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
 
             </div>
 
@@ -91,7 +91,9 @@ $_SESSION['groupdata'] = $groupdata;
             function backbutton() {
                 window.history.back();
             }
-
+            function dashbutton() {
+                window.location = "./dashboard.php"
+            }
             function homebutton() {
                 window.location = "../Routes/home.php";
             }
@@ -100,13 +102,7 @@ $_SESSION['groupdata'] = $groupdata;
                 window.location = "./Profile.php";
             }
 
-            function resbutton() {
-                if (is_election_live) {
-                    alert('Elections are Live. Results not announced yet.');
-                } else {
-                    window.location = "./result.php";
-                }
-            }
+           
 
             function logout() {
                 document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

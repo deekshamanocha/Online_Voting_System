@@ -26,6 +26,8 @@ if ($_SESSION['usersdata']['status'] == 0) {
 <head>
     <title>Online voting system - Dashboard</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 
 </head>
 
@@ -44,15 +46,10 @@ if ($_SESSION['usersdata']['status'] == 0) {
 
             </div>
 
+           
             <h1>
-                <marquee behavior="" direction=" ">
-
-                    <?php
-                    if ($election_is_live == true) {
-                        echo "Election is Live Now";
-                    } else {
-                        echo "Election have ended. Results Declared";
-                    } ?>
+                <marquee id="electionStatusMarquee">
+                   
                 </marquee>
             </h1>
             <script>
@@ -131,7 +128,31 @@ if ($_SESSION['usersdata']['status'] == 0) {
     <script>
         window.localStorage.setItem("attempts", 0);
     </script>
+<script>
+        $(document).ready(function() {
+            // Function to fetch election status via AJAX
+            function checkElectionStatus() {
+                $.ajax({
+                    type: "GET",
+                    url: "../API/check_election_status.php",
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.election_status) {
+                            $("#electionStatusMarquee").text("Election is Live Now");
+                        } else {
+                            $("#electionStatusMarquee").text("Election have ended. Results Declared");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: " + status + " - " + error);
+                    }
+                });
+            }
 
+            checkElectionStatus(); // Initial call
+            setInterval(checkElectionStatus, 1000); // Call every  seconds
+        });
+    </script>
 </body>
 
 </html>

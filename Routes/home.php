@@ -19,6 +19,8 @@ require("../admin/check_election.php");
     <link rel="stylesheet" href="../CSS/bootstrap.min.css">
     <script src="../CSS/bootstrap.min.js">
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <title>Online Voting System</title>
 
 </head>
@@ -104,8 +106,35 @@ require("../admin/check_election.php");
         </div>
     </footer>
 
-
     <script>
+        $(document).ready(function() {
+            // Function to fetch election status via AJAX
+            function checkElectionStatus() {
+                $.ajax({
+                    type: "GET",
+                    url: "../API/check_election_status.php",
+                    dataType: "json",
+                    success: function(response) {
+                        // Update UI based on election status
+                        if (response.election_status) {
+                            $("#live").text("ELECTION IS LIVE");
+                        } else {
+
+                            $("#live").text("ELECTION ENDED");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: " + status + " - " + error);
+                    }
+                });
+            }
+
+            checkElectionStatus(); // Initial call
+            setInterval(checkElectionStatus, 1000); // Call every  seconds
+        });
+    </script>
+    <script>
+
         function homepage() {
             window.location = "Routes/home.php"
         }
@@ -117,7 +146,6 @@ require("../admin/check_election.php");
 
         function signUp() {
             window.location = "./reg.html";
-            // alert("button clicked");
         }
 
         function openNav() {

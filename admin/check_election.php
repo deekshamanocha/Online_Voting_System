@@ -3,9 +3,7 @@ $db = new SQLite3('../db/online_voting_system.db');
 
 date_default_timezone_set('Asia/Kolkata');
 
-// $currentDatetime = date('Y-m-dTH:i:s');
 $currentDatetime = date('Y-m-d\TH:i'); 
-// echo $currentDatetime;
 $query = "SELECT timeend FROM meta";
 $result = $db->querySingle($query);
 
