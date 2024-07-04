@@ -40,7 +40,9 @@ if ($row) {
     // Verify password
     if (password_verify($password, $row['password'])) {
         $verified = $row['verified'];
-        if(!verified) echo '<script>alert("You are not verified!"); window.location = "../Routes/reg.html";</script>'
+        if(!$verified) {echo '<script>alert("You are not verified!");
+             window.location = "../Routes/reg.html";</script>';
+        }
 
         // Reset failed attempts
         $reset_statement = $db->prepare("UPDATE " . ($role == 1 ? "userdata" : "candidate") . " SET failed_attempts = 0 WHERE mobile = :mobile AND role = :role");
@@ -50,7 +52,7 @@ if ($row) {
 
         // Set session variables
         $_SESSION['usersdata'] = $row;
-        echo '<pre>Session usersdata: ' . print_r($_SESSION['usersdata'], true) . '</pre>';
+        // echo '<pre>Session usersdata: ' . print_r($_SESSION['usersdata'], true) . '</pre>';
         
         $groups = $db->query("SELECT * FROM candidate WHERE role = 2");
         $groupdata = [];
@@ -59,7 +61,6 @@ if ($row) {
         }
         $_SESSION['groupdata'] = $groupdata;
         
-        echo '<pre>Session groupdata: ' . print_r($_SESSION['groupdata'], true) . '</pre>';
 
 
         // Redirect based on role

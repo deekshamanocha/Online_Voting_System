@@ -55,8 +55,8 @@ if ($password == $confirmpassword) {
         echo '
             <script>
 
-                // alert("Registration Successful");
-                window.location = "../Routes/otp_req.php";
+             window.location = "../Routes/otp_req.php?role='.$role.'&number='.$number.'";
+
             </script>
         ';
     } else {

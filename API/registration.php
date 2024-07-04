@@ -35,7 +35,8 @@ if ($password == $confirmpassword) {
     if ($insert) {
         echo '
             <script>
-            window.location = "../Routes/otp_req.php";
+            // window.location = "../Routes/otp_req.php";
+             window.location = "../Routes/otp_req.php?role='.$role.'&number='.$number.'";
                 // alert("Registration Successful");
                 // window.location = ".././Routes/login.php";
             </script>                

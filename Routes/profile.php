@@ -70,9 +70,13 @@ $usersdata = $_SESSION['usersdata'];
         </script>
     </div>
     <div class="profile">
-        <div class="prof-img">
-            <img src="../uploads/UserUploads/<?php echo $usersdata['photo'] ?>" id="user-img">
-        </div>
+    <div class="prof-img">
+    <?php if ($usersdata['role'] == 1) { ?>
+        <img src="../uploads/UserUploads/<?php echo $usersdata['photo']; ?>" id="user-img">
+    <?php } else { ?>
+        <img src="../uploads/CandidateUploads/<?php echo $usersdata['cand_img']; ?>" id="user-img">
+    <?php } ?>
+</div>
         <div class="prof-details">
 
             <table>
