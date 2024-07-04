@@ -29,6 +29,7 @@ select{
 }
 #bodysection input[type="text"],
 #bodysection input[type="password"],
+#bodysection input[type="number"],
 #bodysection select {
     width: calc(100% - 20px);
     padding: 10px;

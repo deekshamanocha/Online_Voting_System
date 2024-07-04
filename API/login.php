@@ -39,8 +39,8 @@ $row = $result->fetchArray(SQLITE3_ASSOC);
 if ($row) {
     // Verify password
     if (password_verify($password, $row['password'])) {
-        //$sql_verified = select verified from phone
-        //if(!verified) return
+        $verified = $row['verified'];
+        if(!verified) echo '<script>alert("You are not verified!"); window.location = "../Routes/reg.html";</script>'
 
         // Reset failed attempts
         $reset_statement = $db->prepare("UPDATE " . ($role == 1 ? "userdata" : "candidate") . " SET failed_attempts = 0 WHERE mobile = :mobile AND role = :role");
@@ -78,7 +78,7 @@ if ($row) {
         exit; // Stop further execution
     }
 } else {
-    // echo '<script>alert("User not found or Wrong details!"); window.location = "../Routes/login.php";</script>';
+    echo '<script>alert("User not found or Wrong details!"); window.location = "../Routes/login.php";</script>';
     exit; // Stop further execution
 }
 ?>
