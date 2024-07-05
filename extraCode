@@ -159,3 +159,55 @@ if ($row) {
         ';
     exit; // Stop further execution
 } -->
+
+
+
+
+<!-- <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+
+            <div id="bodysection">
+                <div class="flip-card" id="coloumn">
+                    <div class="flip-card-inner">
+
+                        <div class="flip-card-front">
+                            <img src="../images/bjp.jpg" alt="Avatar" id="partyimg">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Candidate Name</h1>
+                            <p style="font-size: large;">Narendra Damodardas Modi</p>
+                            <img src="../images/narendra modi ji.jpg" alt="" id="candidateimg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" id="coloumn">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../images/congress.jpg" alt="Avatar" id="partyimg">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Candidate Name</h1>
+                            <p style="font-size: large;">Rahul Gandhi</p>
+                            <img src="../images/rahul gandhi.jpeg" alt="" id="candidateimg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" id="coloumn">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../images/aap.jpeg" alt="Avatar" id="partyimg">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Candidate Name</h1>
+                            <p style="font-size: large;">Arvind Kejriwal</p>
+                            <img src="../images/Arvind kejriwal.jpg" alt="" id="candidateimg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->

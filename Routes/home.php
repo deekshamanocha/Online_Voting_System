@@ -49,55 +49,13 @@ require("../admin/check_election.php");
 
     <b><span style="font-size:30px;cursor:pointer;color: black;" onclick="openNav()">&#9776; Candidate List</span></b>
 
+    
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-
-            <div id="bodysection">
-                <div class="flip-card" id="coloumn">
-                    <div class="flip-card-inner">
-
-                        <div class="flip-card-front">
-                            <img src="../images/bjp.jpg" alt="Avatar" id="partyimg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>Candidate Name</h1>
-                            <p style="font-size: large;">Narendra Damodardas Modi</p>
-                            <img src="../images/narendra modi ji.jpg" alt="" id="candidateimg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card" id="coloumn">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="../images/congress.jpg" alt="Avatar" id="partyimg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>Candidate Name</h1>
-                            <p style="font-size: large;">Rahul Gandhi</p>
-                            <img src="../images/rahul gandhi.jpeg" alt="" id="candidateimg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card" id="coloumn">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="../images/aap.jpeg" alt="Avatar" id="partyimg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>Candidate Name</h1>
-                            <p style="font-size: large;">Arvind Kejriwal</p>
-                            <img src="../images/Arvind kejriwal.jpg" alt="" id="candidateimg">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="overlay-content" id="candidate-container">
+            <!-- Candidate cards will be inserted here dynamically -->
         </div>
     </div>
-
     <div id="page-content">
     </div>
     <footer id="sticky-footer" class="flex-shrink-0  text-dark-50">
@@ -108,6 +66,41 @@ require("../admin/check_election.php");
 
     <script>
         $(document).ready(function() {
+            function fetchCandidates() {
+                $.ajax({
+                    type: "GET",
+                    url: "../API/fetch_data.php",
+                    dataType: "json",
+                    success: function(candidates) {
+                        var candidateContainer = $("#candidate-container");
+                        candidateContainer.empty(); // Clear existing content
+
+                        candidates.forEach(function(candidate) {
+                            var card = `
+                                <div class="flip-card" id="coloumn">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="../uploads/CandidateUploads/${candidate.party_img}" alt="Avatar" id="partyimg">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h1>Candidate Name</h1>
+                                            <p style="font-size: large;">${candidate.name}</p>
+                                            <img src="../uploads/CandidateUploads/${candidate.cand_img}" alt="" id="candidateimg">
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            candidateContainer.append(card);
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error: " + status + " - " + error);
+                    }
+                });
+            }
+
+            fetchCandidates();
+            setInterval(fetchCandidates, 10000); // Refresh every 10 seconds
             // Function to fetch election status via AJAX
             function checkElectionStatus() {
                 $.ajax({
@@ -136,7 +129,7 @@ require("../admin/check_election.php");
     <script>
 
         function homepage() {
-            window.location = "Routes/home.php"
+            window.location = "./home.php"
         }
 
         function signin() {
