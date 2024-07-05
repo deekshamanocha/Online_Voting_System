@@ -9,6 +9,28 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
 }
 
 $usersdata = $_SESSION['usersdata'];
+$role=$usersdata['role'];
+$userid = $usersdata['id'];
+
+// Check if user data exists in the database
+if($role==1){
+    $query = "SELECT * FROM userdata WHERE id = :id";
+}
+else{
+    $query = "SELECT * FROM candidate WHERE id = :id";
+
+}
+$stmt = $db->prepare($query);
+$stmt->bindValue(':id', $userid, SQLITE3_INTEGER);
+$result = $stmt->execute();
+$user_data_from_db = $result->fetchArray(SQLITE3_ASSOC);
+
+if (!$user_data_from_db) {
+    // If user data is not found, redirect to login
+    session_destroy();
+    header("Location: ../Routes/login.php", TRUE, 301);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,9 +1,12 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: admin_login.php");
     exit();
 }
+require ("connect.php");
+require("check_election.php");
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +64,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         <div class="sidebar-content">
             <a href="manage_users.php">Manage Users</a><br>
             <a href="manage_election.php">Manage Election</a><br>
-            <a href="view_results.php">View Results</a><br>
+            <a href="#" onclick="res()">View Results</a><br>
             <a href="#" onclick="printPart()">Print Data</a><br>
             <a href="admin_logout.php">Logout</a>
         </div>
@@ -93,6 +96,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
     </div>
 
     <script>
+        function res(){
+            if(!is_election_live){
+                window.location = "./view_results.php";
+            }
+            else{
+                alert("Elections are live now");
+            }
+        }
         function printPart(){
             window.print()
         }
