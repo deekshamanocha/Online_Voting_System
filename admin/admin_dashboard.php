@@ -60,6 +60,7 @@ require("check_election.php");
         </div>
     </div>
 
+    
     <div id="sidebar">
         <div class="sidebar-content">
             <a href="manage_users.php">Manage Users</a><br>
@@ -69,7 +70,7 @@ require("check_election.php");
             <a href="admin_logout.php">Logout</a>
         </div>
     </div>
-
+<div id="blocks">
     <div id="main-content" class="printable">
         <div id="voter" class="block" >
             <h3>Voter Statistics</h3>
@@ -94,7 +95,7 @@ require("check_election.php");
         </div>
 
     </div>
-
+</div>
     <script>
         function res(){
             if(!is_election_live){

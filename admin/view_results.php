@@ -28,7 +28,7 @@ while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
 <head>
     <meta charset="UTF-8">
     <title>View Results</title>
-    <link rel="stylesheet" href="../CSS/admin.css">
+    <link rel="stylesheet" href="./css/view_results.css">
 </head>
 <body>
     <div id="container">

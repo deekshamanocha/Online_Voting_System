@@ -1,27 +1,31 @@
 body{
 
     text-align: center;
-    background-image: url(../admin_asset/admin_bg.webp);
-    background-size: cover;
+    background-image: url(../admin_asset/admin.jpg);
+    background-size: 100% ;
     
 }
 #bodysection {
+    margin: 30px;
     max-width: 400px;
     margin:  auto;
     padding: 20px;
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 #headersection{
-    padding: 10px;
+    padding: 20px;
 }
 
 
 #headersection h1{
     font-family: 'Courier New', Courier, monospace;
 }
-
+h2{
+    color: black;
+}
 select{
     font-size: 18px;
     background-color: #FBEFE5;
