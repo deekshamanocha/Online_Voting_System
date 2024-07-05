@@ -37,16 +37,6 @@ body {
     padding: 10px;
 }
 
-
-.header-section{
-    /* display: flex; */
-    /* flex-direction: row; */
-}
-
-.sidebar-content {
-    /* padding: 10px; */
-}
-
 .sidebar-content a {
     display:block;
     color: black; /* Link color */
