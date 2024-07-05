@@ -57,6 +57,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </div>
     </div>
 
+    
     <div id="sidebar">
         <div class="sidebar-content">
             <a href="manage_users.php">Manage Users</a><br>
@@ -66,7 +67,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <a href="admin_logout.php">Logout</a>
         </div>
     </div>
-
+<div id="blocks">
     <div id="main-content" class="printable">
         <div id="voter" class="block" >
             <h3>Voter Statistics</h3>
@@ -91,7 +92,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </div>
 
     </div>
-
+</div>
     <script>
         function printPart(){
             window.print()

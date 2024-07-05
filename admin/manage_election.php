@@ -24,7 +24,7 @@ $meta = $db->querySingle("SELECT * FROM meta", true);
 <head>
     <meta charset="UTF-8">
     <title>Manage Election</title>
-    <link rel="stylesheet" href="../CSS/admin.css">
+    <link rel="stylesheet" href="./css/manage_election.css">
 </head>
 <body>
     <div id="container">

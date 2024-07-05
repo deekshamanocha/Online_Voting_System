@@ -17,7 +17,7 @@ $groups = $db->query("SELECT * FROM userdata WHERE role=2");
 <head>
     <meta charset="UTF-8">
     <title>View Results</title>
-    <link rel="stylesheet" href="../CSS/admin.css">
+    <link rel="stylesheet" href="./css/view_results.css">
 </head>
 <body>
     <div id="container">
