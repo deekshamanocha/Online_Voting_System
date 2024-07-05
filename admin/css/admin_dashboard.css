@@ -1,12 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(to right, rgba(25,45,131), rgba(235,81,72));
+    background-color: whitesmoke;
 }
 #topbar {
+    
     border: 1px solid black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
     border-radius: 15px; /* Rounded corners */
-    backdrop-filter: blur(10px); /* Blur effect */
+    backdrop-filter: blur(10pc); /* Blur effect */
     -webkit-backdrop-filter: blur(10px); /* Blur effect for Safari */
     padding: 20px;
     margin: 20px;
@@ -23,56 +24,57 @@ body {
     color: #000; /* Text color */
     font-size: xx-large; /* Font size */
     margin: 0; /* Remove default margin */
-
 }
 
 #sidebar {
     width: 200px;
     height: 90%;
-    background-image: linear-gradient(to right, rgba(25,45,131), rgba(235,81,72));
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-top-right-radius: 15px; /* Rounded corners */
     position: fixed;
     left: 0px;
-    padding: 5px;
-    border-top: 3px solid black;
-    border-right: 3px solid black;
-}
-
-#sidebar.active {
-    width: 0px;
-}
-
-.header-section{
-    display: flex;
-    flex-direction: row;
-}
-
-.sidebar-content {
     padding: 10px;
 }
 
+
+.header-section{
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+
+.sidebar-content {
+    /* padding: 10px; */
+}
+
 .sidebar-content a {
-    display: block;
-    color: wheat; /* Link color */
+    display:block;
+    color: black; /* Link color */
+    padding: 10px;
     text-decoration: none; /* Remove underline */
     margin: 19px 0; /* Space between links */
     font-size: 16px; /* Font size */
     font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     letter-spacing: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
 }
 
 .sidebar-content a:hover {
-    text-decoration: underline; /* Underline on hover */
+    background-color: rgb(149, 146, 146);
+    /* #32db1c */
+    color: #ffffff;
 }
 
+
 #main-content {
-    margin-left: 245px;
+    margin-left: 100px;
     margin-top: 70px;
     transition: margin-left 0.2s;
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 
@@ -109,16 +111,18 @@ body {
 }
 
 .block {
+    
     margin: 15px 0;
     flex: 1 1 calc(50% - 40px);/*Ensure padding and border are included in the width*/
 }
 
 #blocks {
-    border: 2px solid black;
+   
     padding: 20px;
-    margin: 20px 0;
+    width: 55pc;
+    margin-left: 20pc;
     background: transparent;
-    /* background: rgba(255, 255, 255, 0.6); Slightly transparent white */
+    background-color: whitesmoke;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
     border-radius: 10px; /* Rounded corners */
 }
@@ -130,9 +134,11 @@ h3 {
 }
 
 p {
-    color: white;
+    color: black;
     font-size: 16px;
     margin: 5px 0;
 }
+
+
 
 
