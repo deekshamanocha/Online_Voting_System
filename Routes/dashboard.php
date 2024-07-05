@@ -19,6 +19,14 @@ if ($_SESSION['usersdata']['status'] == 0) {
     $status = 'Voted successfully';
 }
 
+
+$groups = $db->query("SELECT * FROM candidate WHERE role = 2");
+$groupdata = [];
+while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
+    $groupdata[] = $row;
+}
+$_SESSION['groupdata'] = $groupdata;
+
 ?>
 
 <html>
@@ -101,7 +109,6 @@ if ($_SESSION['usersdata']['status'] == 0) {
                     $party_id = $party['id'];
                     $party_info = $db->querySingle("SELECT * FROM candidate WHERE id='$party_id'", true);
                     ?>
-
                     <div class="card">
                         <img src="../uploads/CandidateUploads/<?php echo $party_info['cand_img'] ?>" class="card-image">
                         <div class="card-content">
