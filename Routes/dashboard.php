@@ -20,7 +20,7 @@ if ($_SESSION['usersdata']['status'] == 0) {
 }
 
 
-$groups = $db->query("SELECT * FROM candidate WHERE role = 2");
+$groups = $db->query("SELECT * FROM candidate WHERE role = 2 and verified=1");
 $groupdata = [];
 while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
     $groupdata[] = $row;
