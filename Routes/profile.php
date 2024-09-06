@@ -49,7 +49,7 @@ if (!$user_data_from_db) {
         <div id="bck-logout">
             <button id="back" onclick="backbutton()"> <span> Back </span></button>
             <div class="rt-nav">
-                <!-- <button id="prof" onclick="profbutton()"> <span> Profile </span></button> -->
+                
                 <button id="res" onclick="resbutton()"> <span> Result </span></button>
                 <button id="home" onclick="homebutton()"> <span>Home</span> </button>
                 <button id="home" onclick="dashbutton()"> <span>Dashboard</span> </button>
@@ -59,9 +59,7 @@ if (!$user_data_from_db) {
 
         </div>
 
-        <!-- <h1>
-            <marquee behavior="" direction=" ">Online Voting System</marquee>
-        </h1> -->
+       
         <h1>
                 <marquee id="electionStatusMarquee">
                    
@@ -83,11 +81,11 @@ if (!$user_data_from_db) {
 
             function homebutton() {
                 window.location = "../Routes/home.php"
-                // alert("button clicked");
+                
             }
             function dashbutton() {
                 window.location = "../Routes/dashboard.php"
-                // alert("button clicked");
+                
             }
 
             function resbutton() {
@@ -100,7 +98,7 @@ if (!$user_data_from_db) {
 
             function profbutton() {
                 window.location = "./Profile.php"
-                // alert("button clicked");
+                
             }
         </script>
     </div>
@@ -172,8 +170,8 @@ if (!$user_data_from_db) {
                 });
             }
 
-            checkElectionStatus(); // Initial call
-            setInterval(checkElectionStatus, 1000); // Call every  seconds
+            checkElectionStatus(); 
+            setInterval(checkElectionStatus, 1000); 
         });
     </script>
 </body>

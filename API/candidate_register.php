@@ -1,6 +1,16 @@
 <?php
 require("connect.php");
 require("../admin/check_election.php");
+if ($election_is_live) {
+    echo '
+    <script>
+                alert("Candidate registration is closed because the election has started.");
+                window.location = "../Routes/home.php";
+                
+                </script>';
+                exit();
+    
+}
 
 $name = $_POST['name'];
 $number = $_POST['number'];

@@ -12,7 +12,7 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
 $usersdata = $_SESSION['usersdata'];
 $groupdata = $_SESSION['groupdata'];
 
-// print_r($groupdata);
+
 if ($_SESSION['usersdata']['status'] == 0) {
     $status = 'Not voted';
 } else {
@@ -88,6 +88,7 @@ $_SESSION['groupdata'] = $groupdata;
                     } else {
                         window.location = "./result.php";
                     }
+                    // document.getElementById('res').addEventListener('click', resbutton);
                 }
 
                 function logout() {
@@ -117,7 +118,7 @@ $_SESSION['groupdata'] = $groupdata;
                                 <p class="vote-status">Status: <?php echo $status ?> </p>
                                 <input type="hidden" name="pvote" value="<?php echo $party_info['votes'] ?>">
                                 <input type="hidden" name="pid" value="<?php echo $party_info['id'] ?>">
-                                <input type="submit" name="votebutton" value="VOTE" class="vote-button" <?php if ($_SESSION['usersdata']['status'] == 1 || $election_is_live == false) {
+                                <input id="voteButton<?php echo $party_info['id'] ?>" type="submit" name="votebutton" value="VOTE" class="vote-button" <?php if ($_SESSION['usersdata']['status'] == 1 || $election_is_live == false) {
                                     echo "disabled";
                                 } ?>>
                                 <br><br><br>
@@ -144,11 +145,14 @@ $_SESSION['groupdata'] = $groupdata;
                     url: "../API/check_election_status.php",
                     dataType: "json",
                     success: function(response) {
+                        // window.isElectionLive = response.election_status;
+                        is_election_live=true;
                         if (response.election_status) {
                             $("#electionStatusMarquee").text("Election is Live Now");
                         } else {
                             $("#electionStatusMarquee").text("Election have ended. Results Declared");
                         }
+                        updateVoteButtons();
                     },
                     error: function(xhr, status, error) {
                         console.error("AJAX Error: " + status + " - " + error);
@@ -156,8 +160,18 @@ $_SESSION['groupdata'] = $groupdata;
                 });
             }
 
-            checkElectionStatus(); // Initial call
-            setInterval(checkElectionStatus, 1000); // Call every  seconds
+            function updateVoteButtons() {
+                $('input.vote-button').each(function() {
+                    if (window.isElectionLive && <?php echo $_SESSION['usersdata']['status'] == 0; ?>) {
+                        $(this).prop('disabled', false);
+                    } else {
+                        $(this).prop('disabled', true);
+                    }
+                });
+            }
+
+            checkElectionStatus(); 
+            setInterval(checkElectionStatus, 1000); 
         });
     </script>
 </body>

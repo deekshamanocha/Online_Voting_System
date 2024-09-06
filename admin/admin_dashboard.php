@@ -47,10 +47,8 @@ require("check_election.php");
                 }
                 });
             }
-            // Initial update
             updateStatistics();
 
-            // Update every 10 seconds
             setInterval(updateStatistics, 10000);
         });
     </script>

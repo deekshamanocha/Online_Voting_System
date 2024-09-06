@@ -9,10 +9,22 @@ if (empty($_SESSION) || !isset($_SESSION['usersdata'])) {
     exit();
 }
 
-$groups = $db->query("SELECT * FROM userdata WHERE role=2 ");
+$groups = $db->query("SELECT * FROM candidate WHERE role=2  and verified=1");
 $groupdata = [];
+$maxVotes = -1;
+$winner = null;
+$winnerName = "";
+
 while ($row = $groups->fetchArray(SQLITE3_ASSOC)) {
     $groupdata[] = $row;
+    if ($row['votes'] > $maxVotes) {
+        $maxVotes = $row['votes'];
+        $winner = $row;
+        $winnerName = $row['name'];
+    } elseif ($row['votes'] == $maxVotes) {
+        $winner = null;  // Handle tie case
+        $winnerName = "Election Tie";
+    }
 }
 
 $_SESSION['groupdata'] = $groupdata;
@@ -65,26 +77,18 @@ $_SESSION['groupdata'] = $groupdata;
 <body>
     <div id="headersection">
         <div id="bck-logout">
-            <button id="back" onclick="backbutton()" span> Back </span></button>
+            <button id="back" onclick="backbutton()">Back</button>
             <div class="rt-nav">
-                <button id="prof" onclick="profbutton()"> <span> Profile </span></button>
-                <button id="home" onclick="homebutton()"> <span>Home</span> </button>
-                <button id="home" onclick="dashbutton()"> <span>Dashboard</span> </button>
-                <button id="logout" onclick="logout()"> <span>Logout</span> </button>
-
+                <button id="prof" onclick="profbutton()">Profile</button>
+                <button id="home" onclick="homebutton()">Home</button>
+                <button id="dashboard" onclick="dashbutton()">Dashboard</button>
+                <button id="logout" onclick="logout()">Logout</button>
             </div>
-
         </div>
 
         <h1>
-            <marquee behavior="" direction=" ">
-
-                <?php
-                if ($election_is_live == true) {
-                    echo "Election is Live Now";
-                } else {
-                    echo "Election have ended. Results Declared";
-                } ?>
+            <marquee behavior="" direction="">
+                <?php echo $election_is_live ? "Election is Live Now" : "Election has ended. Results Declared"; ?>
             </marquee>
         </h1>
         <script>
@@ -97,63 +101,31 @@ $_SESSION['groupdata'] = $groupdata;
             function homebutton() {
                 window.location = "../Routes/home.php";
             }
-
             function profbutton() {
                 window.location = "./Profile.php";
             }
-
-           
-
             function logout() {
                 document.cookie = "<?php echo session_name(); ?>=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.history.back();
+                window.location.href = "../Routes/login.php";
             }
         </script>
-
     </div>
-    <div style="color: black; background-image: url(../images/img2.jpg);;border: solid whitesmoke; " class="result-box">
+    <div style="color: black; background-image: url(../images/img2.jpg); border: solid whitesmoke;" class="result-box">
         <h1>Voting Results</h1>
 
-        <?php foreach ($groupdata as $result) {
-            echo "<div class='candidate'>";
-            echo "<h2>";
-            echo $result['name'];
-            echo "</h2>";
-            echo "<p>Votes: <span id='mvotes'>";
-            echo $result['votes'];
-            echo "</span></p>";
-            echo "</div>";
-            echo "<br>";
-        } ?>
+        <?php foreach ($groupdata as $result): ?>
+            <div class="candidate">
+                <h2><?php echo htmlspecialchars($result['name']); ?></h2>
+                <p>Votes: <span class="mvotes"><?php echo $result['votes']; ?></span></p>
+            </div>
+            <br>
+        <?php endforeach; ?>
 
-        <div style="border: solid rgb(255, 246, 246); background-color: rgb(255, 243, 5); color: #000; font-weight: 900;"
-            class="winner">
-            <p>Winner: <span id="winner_name"></span></p>
+        <div style="border: solid rgb(255, 246, 246); background-color: rgb(255, 243, 5); color: #000; font-weight: 900;" class="winner">
+            <p>Winner: <span id="winner_name"><?php echo $winnerName; ?></span></p>
         </div>
 
         <div class="special-election" id="special_election"></div>
     </div>
-
-    <script>
-        const iwinnerName = document.querySelector('#winner_name');
-        let cdivs = document.querySelectorAll('.candidate');
-        let maxVotes = -1;
-        let winner = "";
-        let tie = false;
-        for (let cdiv of cdivs) {
-            let cvotes = parseInt(cdiv.querySelector('#mvotes').innerHTML);
-            if (maxVotes == cvotes) {
-                tie = true;
-                break;
-            }
-            if (maxVotes <= cvotes) {
-                winner = cdiv.querySelector('h2').innerHTML;
-                maxVotes = cvotes;
-            }
-        }
-        if (tie) iwinnerName.innerHTML = "Election Tie";
-        else iwinnerName.innerHTML = winner;
-    </script>
 </body>
-
 </html>

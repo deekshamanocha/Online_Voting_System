@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Login</title>
+    <title>Verify Otp</title>
     <link rel="stylesheet" href="../admin/css/admin_login.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>

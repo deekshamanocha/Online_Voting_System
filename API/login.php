@@ -2,20 +2,19 @@
 <?php
 session_start();
 
-require("connect.php"); // Assuming this file connects to your SQLite database
+require("connect.php"); 
 require("../admin/check_election.php");
 
 $mobile = $_POST['mobile'];
 $password = $_POST['password'];
 $role = $_POST['role'];
 
-// Check if database connection is successful
 if (!$db) {
     echo '<script>alert("Could not connect to database.");</script>';
     exit;
 }
 
-// Prepare query to check failed login attempts
+
 $attempt_statement = $db->prepare("SELECT failed_attempts FROM " . ($role == 1 ? "userdata" : "candidate") . " WHERE mobile = :mobile AND role = :role");
 $attempt_statement->bindValue(':mobile', $mobile);
 $attempt_statement->bindValue(':role', $role);
@@ -25,7 +24,7 @@ $attempt_row = $attempt_result->fetchArray(SQLITE3_ASSOC);
 
 if ($attempt_row && $attempt_row['failed_attempts'] >= 3) {
     echo '<script>alert("Your account is locked due to multiple failed login attempts. Please contact support."); window.location = "../Routes/login.php";</script>';
-    exit; // Stop further execution
+    exit;
 }
 
 // Prepare query to fetch user data
@@ -52,7 +51,6 @@ if ($row) {
 
         // Set session variables
         $_SESSION['usersdata'] = $row;
-        // echo '<pre>Session usersdata: ' . print_r($_SESSION['usersdata'], true) . '</pre>';
         
         $groups = $db->query("SELECT * FROM candidate WHERE role = 2");
         $groupdata = [];
@@ -66,7 +64,7 @@ if ($row) {
         // Redirect based on role
         if ($role == 1 || $role == 2) {
             echo '<script>window.location.replace("../Routes/dashboard.php");</script>';
-            exit; // Stop further execution
+            exit; 
         }
     } else {
         // Increment failed attempts
@@ -76,10 +74,10 @@ if ($row) {
         $increment_statement->execute();
         
         echo '<script>alert("Wrong password!"); window.location = "../Routes/login.php";</script>';
-        exit; // Stop further execution
+        exit; 
     }
 } else {
     echo '<script>alert("User not found or Wrong details!"); window.location = "../Routes/login.php";</script>';
-    exit; // Stop further execution
+    exit; 
 }
 ?>
